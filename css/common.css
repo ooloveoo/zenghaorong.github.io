@@ -1,0 +1,87 @@
+body{
+	font-size: 16px;
+	background-color: #F8F8F8;
+	line-height: 1.6;
+	font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+body,ul{
+	padding: 0;
+	margin: 0;
+}
+ul{
+	list-style: none;
+}
+
+select,input,button{
+	outline: none;
+	border: none; 
+	-webkit-appearance:none;
+	background-color: transparent;
+	font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.page{
+	width: 100%;
+	font-size: 1em;
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+
+/*color*/
+.gray{
+	color: #666;
+}
+.light-gray{
+	color: #999;
+}
+
+/*按钮*/
+.footer{
+	margin: 2em 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 1em;
+}
+.btn{
+	width: 45%;
+	border-radius: 5px;
+	font-size: 1em;
+	padding: 0.5em 0;
+	-webkit-transition:all 0.1s ease;
+	transition: all 0.1s ease;
+}
+.cancel{
+	border:1px solid #999;
+	
+}
+.confirm{
+	background-color: #39f;
+	color: #fff;
+}
+.back{
+	background-color: #39f;
+	color: #fff;
+	width: 100%;
+	margin: 0 auto;
+}
+button.btn:active{
+	background-color: #999;
+	box-shadow: 0px 3px 3px  1px rgba(0,0,0,.2);
+}
+
+@media(min-width: 375px){
+	body{
+		font-size: 18px;
+	}
+}
+
+@media(min-width: 410px){
+	body{
+		font-size: 19px;
+	}
+}
