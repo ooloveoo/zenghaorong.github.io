@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/myfont.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+	<title>受益人变更</title>
+	
+</head>
+<body>
+	<div class="page">
+		<div class="header">
+			<div class="shezhi">
+				<div>当前受益设置</div>
+				<div>受益方式：<strong>比例</strong></div>
+			</div>
+			<div class="ren">
+				<table cellspacing="0" cellpadding="0">
+					<tr class="tr">
+						<td>姓名</td>
+						<td>比例</td>
+						<td>与被保险人关系</td>
+					</tr>
+					<tr>
+						<td>王大</td>
+						<td>50%</td>
+						<td>哥哥</td>
+					</tr>
+					<tr>
+						<td>王三</td>
+						<td>50%</td>
+						<td>弟弟</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="chooseType">
+			<div class="titleType">
+				<span>选择受益方式</span>
+				<button class="infoType">?</button>
+			</div>
+			<div class="type">
+				
+				<label>
+					<input type="radio" name="radio" value="0">均分
+				</label>
+				<label>
+					<input type="radio" name="radio" value="1">比例
+				</label>
+				<label>
+					<input type="radio" name="radio" value="2">顺位
+				</label>
+			</div>
+		</div>
+		
+		<div class="title"><span class="icon-spin3"></span>&nbsp;选择受益人</div>
+		<div class="conList">
+			<div class="conBox">
+				<div class="conItem">
+					<div class="guanxi">
+						<span>王大</span>
+						<span>是被保人的</span>
+						<span>哥哥</span>
+					</div>
+					<div class="choose">
+						<span class="xxInfo icon-search">详细信息</span>
+						<label >
+							<input type="checkbox" name="checkbox" >
+							<span class="icon-ok">选择</span>
+						</label>
+					</div>
+				</div>
+
+				<div class="conInfo" style="display:none;">
+					<ul>
+						<li>
+							<span>证件类型：</span><span>身份证</span>
+						</li>
+						<li>
+							<span>证件号码：</span><span>425676876212121290</span>
+						</li>
+						<li>
+							<span>联系手机：</span><span>13787265387</span>
+						</li>
+						<li>
+							<span>联系地址：</span><span>上海市杨浦区</span>
+						</li>
+						<li >
+							<span>职业：</span><span>IT</span>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			
+
+			<div class="conBox">
+				<div class="conItem">
+					<div class="guanxi">
+						<span>王三</span>
+						<span>是被保人的</span>
+						<span>弟弟</span>
+					</div>
+					<div class="choose">
+						<span class="xxInfo icon-search">详细信息</span>
+						<label >
+							<input type="checkbox" name="checkbox" >
+							<span class="icon-ok">选择</span>
+						</label>
+					</div>
+				</div>
+
+				<div class="conInfo" style="display:none;">
+					<ul>
+						<li>
+							<span>证件类型：</span><span>身份证</span>
+						</li>
+						<li>
+							<span>证件号码：</span><span>425676876212121290</span>
+						</li>
+						<li>
+							<span>联系手机：</span><span>13787265387</span>
+						</li>
+						<li>
+							<span>联系地址：</span><span>上海市杨浦区</span>
+						</li>
+						<li >
+							<span>职业：</span><span>IT</span>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+		<div class="add">
+			<button id="add"><span class="icon-plus"></span>&nbsp;添加受益人</button>
+		</div>
+		<div class="footer">
+			<button class="btn cancel">取消</button>
+			<button class="btn confirm" id="confirm">确定</button>
+		</div>
+	</div>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!-- <script src="js/touch-0.2.14.min.js"></script> -->
+	<script>
+	      $(function(){
+	      	$('.xxInfo').on('click',function(){
+	      		$(this).parents('.conItem').next().slideToggle(100);
+	      	});
+
+
+	      	var arr=$('.type input[name=radio]');
+			$('.type input[name=radio]').on('change',function(){
+				var type=$(this).val();
+
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].checked){
+						$(arr[i]).parent().css({'background-color':'#e85555','borderColor':'#e85555'});
+					}else{
+						$(arr[i]).parent().css({'background-color':'transparent','borderColor':'#fff'});
+					}
+				}
+				
+				sessionStorage.type=type;
+			});
+
+
+	      	$('.choose input[type=checkbox]').on('change',function(){
+	      		
+      			if($(this)[0].checked){
+	      			$(this).parents('.conBox').find('.guanxi').css('color','#39f');
+	      		}else{
+	      			$(this).parents('.conBox').find('.guanxi').css('color','#333');
+	      		}	      		
+	      	});
+
+	      	$('#confirm').on('click',function(){
+	      		window.location.href='choose.html';
+	      	});
+
+	      	$('#add').on('click',function(){
+	      		window.location.href='add.html';
+	      	});
+	      });
+	</script>
+</body>
+</html>

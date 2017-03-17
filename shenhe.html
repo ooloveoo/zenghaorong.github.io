@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/myfont.css">
+	<link rel="stylesheet" href="css/common.css">
+	<title>新增受益人</title>
+	<style>
+		.header{
+			text-align: center;
+			display: inline-block;
+			width: 5em;
+			height: 5em;
+			border-radius: 50%;
+			border:3px solid #00cd00;
+			position: relative;
+			margin: 30% auto 10% auto;
+		}
+		.header span{
+			font-size: 2.5em;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
+			color: #00cd00;
+		}
+
+		.con{
+			width: 75%;
+			margin: 0 auto;
+		}
+		
+		
+
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="header">
+			<span class="icon-ok"></span>
+		</div>
+		<div class="con">
+			
+			<div>亲，您尾号8888的保单受益人变更成功，您可在“我的保单”里查询变更后受益人信息。</div>
+
+		</div>
+
+		<div class="footer">
+			
+			<button class="btn back" id="confirm">确定</button>
+		</div>
+	</div>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script>
+		$(function(){
+			$('#confirm').on('click',function(){
+	      		window.location.href='index.html';
+	      	});
+		});
+		
+						
+	</script>
+</body>
+</html>
