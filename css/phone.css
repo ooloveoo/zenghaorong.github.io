@@ -1,0 +1,130 @@
+/*phone*/
+.phoneBox{
+	background-color: #111;
+	padding: 90px 20px 100px 20px;
+	border-radius: 42px;
+	display: inline-block;
+	border:8px solid #626669;
+	position: relative;
+	margin:0 auto;
+}
+
+.phoneBox iframe{
+	width: 348px;
+	height: 568px;
+	background-color: #fff;
+	
+}
+
+.phone_t{
+	display: inline-block;
+	height: 8px;
+	width: 80px;
+	border-radius: 20px;
+	background-color: #626669;
+	position: absolute;
+	top: 46px;
+	left: 50%;
+	margin-left: -40px;
+}
+.phone_t:after,
+.phone_t:before{
+	content: ' ';
+	display: inline-block;
+	
+	border-radius: 50%;
+	background-color: #626669;
+	position: absolute;
+}
+
+.phone_t:before{
+	width: 15px;
+	height: 15px;
+	top: -30px;
+	left: 50%;
+	margin-left: -5px;
+}
+.phone_t:after{
+	width: 10px;
+	height: 10px;
+	left: -30px;
+}
+.phone_b{
+	background-color: #444;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	bottom: 18px;
+	left: 50%;
+	margin-left: -30px;
+	border:4px solid #626669;
+}
+
+.close{
+	position: fixed;
+	display: inline-block;
+	
+	right: 20px;
+	top: 20px;
+	color: #13171a;
+	text-decoration: none;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	font-size: 1.2em;
+}
+.close:hover{
+	color: #ff831e;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);;
+	-moz-transform: rotate(90deg);;
+	-ms-transform: rotate(90deg);;
+	-o-transform: rotate(90deg);;
+}
+
+/*ipad*/
+.ipadBox{
+	background-color: #111;
+	padding: 20px 100px 20px 90px;
+	border-radius: 42px;
+	display: inline-block;
+	border:8px solid #626669;
+	position: relative;
+	margin:0 auto;
+}
+
+.ipadBox iframe{
+	width: 819px;
+	height: 614px;
+	background-color: #fff;
+	
+}
+
+.ipad_t{
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	border-radius: 20px;
+	background-color: #626669;
+	position: absolute;
+	top: 50%;
+	left: 40px;
+	margin-top: -5px;
+}
+
+
+.ipad_b{
+	background-color: #444;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	bottom: 18px;
+	top: 50%;
+	margin-top: -30px;
+	right: 15px;
+	border:4px solid #626669;
+}

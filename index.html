@@ -2,194 +2,210 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="format-detection" content="telephone=no">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.5" />
+	<meta name="format-detection" content="telephone=no" /> 
+	<title>Welcome To My Homepage!</title>
+	
 	<link rel="stylesheet" href="css/myfont.css">
 	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/phone.css">
 	<link rel="stylesheet" href="css/index.css">
-	<title>受益人变更</title>
-	
 </head>
 <body>
-	<div class="page">
-		<div class="header">
-			<div class="shezhi">
-				<div>当前受益设置</div>
-				<div>受益方式：<strong>比例</strong></div>
-			</div>
-			<div class="ren">
-				<table cellspacing="0" cellpadding="0">
-					<tr class="tr">
-						<td>姓名</td>
-						<td>比例</td>
-						<td>与被保险人关系</td>
-					</tr>
-					<tr>
-						<td>王大</td>
-						<td>50%</td>
-						<td>哥哥</td>
-					</tr>
-					<tr>
-						<td>王三</td>
-						<td>50%</td>
-						<td>弟弟</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-
-		<div class="chooseType">
-			<div class="titleType">
-				<span>选择受益方式</span>
-				<button class="infoType">?</button>
-			</div>
-			<div class="type">
+	<header>
+		<nav>
+			<strong>ZengHaoRong</strong> <span> &nbsp;|&nbsp;</span> <span class="name">曾浩荣</span>
+			<!-- <a href="#">about me</a> -->
+		</nav>
+	</header>
+	
+	<!-- works -->
+	<main>
+		<aside>
+			<article class="tit">
+				<p>I<sup>,</sup>M</p> 
+				<p>Programmer</p>
+				<p><span class="and">&amp;</span>Serve</p>
+				<p>My Clients</p>
+			</article>
+		</aside>
+		<aside >
 				
-				<label>
-					<input type="radio" name="radio" value="0">均分
-				</label>
-				<label>
-					<input type="radio" name="radio" value="1">比例
-				</label>
-				<label>
-					<input type="radio" name="radio" value="2">顺位
-				</label>
-			</div>
-		</div>
-		
-		<div class="title"><span class="icon-spin3"></span>&nbsp;选择受益人</div>
-		<div class="conList">
-			<div class="conBox">
-				<div class="conItem">
-					<div class="guanxi">
-						<span>王大</span>
-						<span>是被保人的</span>
-						<span>哥哥</span>
-					</div>
-					<div class="choose">
-						<span class="xxInfo icon-search">详细信息</span>
-						<label >
-							<input type="checkbox" name="checkbox" >
-							<span class="icon-ok">选择</span>
-						</label>
-					</div>
-				</div>
+			<article id="appsShow">
+				<h5>Works</h5>
+				<ul class="wrapper" id="conShow">
 
-				<div class="conInfo" style="display:none;">
-					<ul>
-						<li>
-							<span>证件类型：</span><span>身份证</span>
-						</li>
-						<li>
-							<span>证件号码：</span><span>425676876212121290</span>
-						</li>
-						<li>
-							<span>联系手机：</span><span>13787265387</span>
-						</li>
-						<li>
-							<span>联系地址：</span><span>上海市杨浦区</span>
-						</li>
-						<li >
-							<span>职业：</span><span>IT</span>
-							
-						</li>
-					</ul>
-				</div>
-			</div>
+				</ul>
+			</article>	
 
+		</aside>
+	</main>
+	
+	<!-- 图像按钮 -->
+	<footer>
+		<a href="#" id="parson">
+			<img src="images/parson.jpg" />
+		</a>
+		<div class="shaow"></div>
+	</footer>
+
+	<!-- 个人信息 -->
+	<div id="info" class="info">
+
+		<ul>
+			<li style="text-align:center;">
+				<img src="images/er.jpg" />
+			</li>
 			
-
-			<div class="conBox">
-				<div class="conItem">
-					<div class="guanxi">
-						<span>王三</span>
-						<span>是被保人的</span>
-						<span>弟弟</span>
-					</div>
-					<div class="choose">
-						<span class="xxInfo icon-search">详细信息</span>
-						<label >
-							<input type="checkbox" name="checkbox" >
-							<span class="icon-ok">选择</span>
-						</label>
-					</div>
-				</div>
-
-				<div class="conInfo" style="display:none;">
-					<ul>
-						<li>
-							<span>证件类型：</span><span>身份证</span>
-						</li>
-						<li>
-							<span>证件号码：</span><span>425676876212121290</span>
-						</li>
-						<li>
-							<span>联系手机：</span><span>13787265387</span>
-						</li>
-						<li>
-							<span>联系地址：</span><span>上海市杨浦区</span>
-						</li>
-						<li >
-							<span>职业：</span><span>IT</span>
-							
-						</li>
-					</ul>
-				</div>
-			</div>
-
 			
-		</div>
-		<div class="add">
-			<button id="add"><span class="icon-plus"></span>&nbsp;添加受益人</button>
-		</div>
-		<div class="footer">
-			<button class="btn cancel">取消</button>
-			<button class="btn confirm" id="confirm">确定</button>
-		</div>
+			<li>
+				<h5>手机：(+86)</h5>
+				<span>13774365605</span>
+			</li>
+			<li>
+				<h5>邮箱：</h5>
+				<span>zenghaorong123@sina.com</span>
+			</li>
+			<li>
+				<h5>UC：</h5>
+				<span>曾浩荣 </span>
+			</li>
+			
+		</ul>
 	</div>
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- <script src="js/touch-0.2.14.min.js"></script> -->
-	<script>
-	      $(function(){
-	      	$('.xxInfo').on('click',function(){
-	      		$(this).parents('.conItem').next().slideToggle(100);
-	      	});
-
-
-	      	var arr=$('.type input[name=radio]');
-			$('.type input[name=radio]').on('change',function(){
-				var type=$(this).val();
-
-				for(var i=0;i<arr.length;i++){
-					if(arr[i].checked){
-						$(arr[i]).parent().css({'background-color':'#e85555','borderColor':'#e85555'});
-					}else{
-						$(arr[i]).parent().css({'background-color':'transparent','borderColor':'#fff'});
-					}
-				}
+	
+	<!-- 演示层 -->
+	<div id="ceng" class="ceng" >
+		<article id="apps">
+			<h5>Works</h5>
+			<ul class="wrapper" id="cengShow">
 				
-				sessionStorage.type=type;
+			</ul>
+		</article>
+
+		<article  id="contents">
+			<a href="javascript:void(0)" class="close icon-cancel" title="close" id="close"></a>
+			<div class="phoneBox" style="display:none;">
+				<div class="phone_t"></div>
+				<iframe src="" frameborder="0" id='phone_f'></iframe>
+				<div class="phone_b"></div>
+			</div>
+
+			<div class="ipadBox" style="display:none;">
+				<div class="ipad_t"></div>
+				<iframe src="" frameborder="0" id='ipad_f'></iframe>
+				<div class="ipad_b"></div>
+			</div>
+		</article>
+
+	</div>
+
+
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/works.js"></script>
+
+	<script>
+		$(function(){
+			var html='',html2='';	
+			for(var i=0;i<works.length;i++){
+				html+='<li>'+
+						'<h4><a href="javascript:void(0)" data-href="'+works[i].href+'" data-type="'+works[i].type+'" data-id="'+i+'">'+works[i].appName+'</a></h4>'+
+						'<div class="con">'+
+							'<span>'+works[i].appInfo+'</span>'+
+						'</div>'+
+					'</li>';
+
+				html2+='<li>'+
+						'<h4><a href="javascript:void(0)" data-href="'+works[i].href+'" data-type="'+works[i].type+'" id="w_'+i+'">'+works[i].appName+'</a></h4>'+
+						'<div class="con">'+
+							'<span>'+works[i].appInfo+'</span>'+
+						'</div>'+
+					'</li>';
+			}
+
+			$('#conShow').append(html);	
+			$('#cengShow').append(html2);	
+
+
+			$('#parson').on({
+				mouseover:function(){
+					$('#info').show();
+				},
+				mouseout:function(){
+					$('#info').hide();
+				}
 			});
 
 
-	      	$('.choose input[type=checkbox]').on('change',function(){
-	      		
-      			if($(this)[0].checked){
-	      			$(this).parents('.conBox').find('.guanxi').css('color','#39f');
-	      		}else{
-	      			$(this).parents('.conBox').find('.guanxi').css('color','#333');
-	      		}	      		
-	      	});
+			$('#conShow a').on('click',function(){
 
-	      	$('#confirm').on('click',function(){
-	      		window.location.href='choose.html';
-	      	});
+				$(this).css('color','#ff831e');
 
-	      	$('#add').on('click',function(){
-	      		window.location.href='add.html';
-	      	});
-	      });
+				var href=$(this).attr('data-href');
+				var type=$(this).attr('data-type');
+				var id=$(this).attr('data-id');
+				
+				if(type=='phone'){
+					$('.phoneBox').show();
+					$('.ipadBox').hide();
+					$('#phone_f').attr('src',href);
+				}else{
+					$('.ipadBox').show();
+					$('.phoneBox').hide();
+					$('#ipad_f').attr('src',href);
+				}
+
+				$('#ceng').css('left','0');
+				window.location.href='#w_'+id;
+				
+				var allApps=$('#apps a');
+				for(var i=0;i<allApps.length;i++){
+					if($('#w_'+id)[0]==allApps[i]){
+						$(allApps[i]).css('color','#ff831e');
+					}else{
+						$(allApps[i]).css('color','#fff');
+					}
+				}
+
+				var conApps=$('#conShow a');
+				for(var i=0;i<conApps.length;i++){
+					if($(this)[0]==conApps[i]){
+						$(conApps[i]).css('color','#ff831e');
+					}else{
+						$(conApps[i]).css('color','#fff');
+					}
+				}
+			});
+
+			$('#apps a').on('click',function(){
+				var href=$(this).attr('data-href');
+				var type=$(this).attr('data-type');
+
+				if(type=='phone'){
+					$('.phoneBox').show();
+					$('.ipadBox').hide();
+					$('#phone_f').attr('src',href);
+				}else{
+					$('.ipadBox').show();
+					$('.phoneBox').hide();
+					$('#ipad_f').attr('src',href);
+				}
+
+				var allApps=$('#apps a');
+				for(var i=0;i<allApps.length;i++){
+					if($(this)[0]==allApps[i]){
+						$(allApps[i]).css('color','#ff831e');
+					}else{
+						$(allApps[i]).css('color','#fff');
+					}
+				}
+			});
+
+			$('#close').on('click',function(){
+				$('#ceng').css('left','100%');
+			});
+		});
 	</script>
 </body>
 </html>
