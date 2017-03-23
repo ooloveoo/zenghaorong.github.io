@@ -82,7 +82,7 @@ aside .tit p:last-child{
 
 h5{
 	color: #626669;
-	font-size: 0.9em;
+	font-size: 1em;
 }
 
 #appsShow #conShow{
@@ -311,7 +311,7 @@ iframe::-webkit-scrollbar-thumb,
 .info_table{
 	display: block;
 	background-color: #fff;
-	width:842px;
+	width:740px;
 	margin: 0 auto;
 	padding: 3em 2em 3em 0; 
 	box-sizing: border-box;
@@ -361,7 +361,7 @@ iframe::-webkit-scrollbar-thumb,
 	clear: both;
 }
 .info_right img{
-	width:140px; 
+	width:115px; 
 }
 
 #experience .icon-star-empty{

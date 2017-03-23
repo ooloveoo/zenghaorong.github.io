@@ -23,13 +23,13 @@ select,input,button{
 
 @media(min-width: 375px){
 	body{
-		font-size: 19px;
+		font-size: 17px;
 	}
 }
 
 @media(min-width: 410px){
 	body{
-		font-size: 20px;
+		font-size: 18px;
 	}
 }
 
