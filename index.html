@@ -16,7 +16,7 @@
 	<header>
 		<nav>
 			<strong>ZengHaoRong</strong> <span> &nbsp;|&nbsp;</span> <span class="name">曾浩荣</span>
-			<!-- <a href="#">about me</a> -->
+			<a href="javascript:void(0)" class="about icon-right-hand" id="about" title="查看个人简历">about me</a>
 		</nav>
 	</header>
 	
@@ -101,31 +101,143 @@
 
 	</div>
 
+	<!-- 个人简历 -->
+	<div id="myInfo" class="myInfo" >
+		<article>
+			<a href="javascript:void(0)" class="close icon-cancel" title="close" id="close2"></a>
+			<table cellpadding="0" cellspacing="0" class="info_table">
+				<tr>
+					<td>
+						<h4 class="sq">基本资料</h4>
+						<div class="info_con">
+							<div class="info_left">
+								<ul>
+									<li>
+										<span>姓&nbsp;&nbsp;&nbsp;名：<strong>曾浩荣</strong></span>	
+									</li>
+									<li>
+										<span>手&nbsp;&nbsp;&nbsp;机：<strong>13174365605</strong></span>		
+									</li>
+									<li>
+										<span>籍&nbsp;&nbsp;&nbsp;贯：<strong>湖北省汉川市</strong></span>	
+									</li>
+									<li>				
+										<span>E-mail：<strong>zenghaorong123@sina.com</strong></span>
+									</li>
+									<li>
+										<span>个人主页：<strong>www.zenghaorong.cn</strong></span>
+									</li>
+								</ul>
+							</div>
+							<div class="info_center">
+								<ul>
+									<li>
+										<span>出生日期：<strong>1992-06-26</strong></span>	
+									</li>
+									<li>	
+										<span>毕业学校：<strong>湖北工程学院（2014级本科）</strong></span>
+									</li>
+									<li>
+										<span>现&nbsp;住&nbsp;址：<strong>上海市浦东新区三林新村</strong></span>
+									</li>
+								</ul>
+							</div>
+							<div class="info_right">
+								<img src="images/me.jpg" title="曾浩荣">					
+							</div>
+							<div class="clear"></div>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<h4 class="sq">项目经验</h4>
+						
+						<ul id="experience"></ul>
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h4 class="sq">专业技能</h4>
+						<ul class="skill">
+							<li>
+								<img src="images/read.png" >
+								<span>高速的阅读和学习能力</span>
+								<div class="clear"></div>
+							</li>
+							<li>
+								<img src="images/h5.png" >
+								<span>较丰富的移动前端开发，熟练掌握html+css+js技术和相关的框架,对angularJS、ionic、vueJs、phonegap有一定的了解。熟悉android和ios与html之间的交互；做过微信小程序的独立开发</span>
+								<div class="clear"></div>
+							</li>
+							<li>
+								<img src="images/java.png" >
+								<span>熟悉java知识，懂得前端与后台之间数据的传递;了解ssh三大框架和servlet;了解一些nodejs相关知识</span>
+								<div class="clear"></div>
+							</li>
+							<li>
+								<img src="images/mysql.png" >
+								<span>对mysql和oracle数据库有一定了解</span>
+								<div class="clear"></div>
+							</li>
+							<li>
+								<img src="images/ps.png" >
+								<span>做过平面设计，了解ps、cdr等平面开发工具</span>
+								<div class="clear"></div>
+							</li>
+						</ul>
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h4 class="sq">个人爱好</h4>
+						<div class="xq">
+							<span>体育运动</span>
+							<span>电子竞技</span>
+							<span>美食</span>
+							<span>证券</span>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</article>
+	</div>
+
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/works.js"></script>
 
 	<script>
 		$(function(){
-			var html='',html2='';	
+			var html='',html2='',html3='';	
 			for(var i=0;i<works.length;i++){
 				html+='<li>'+
 						'<h4><a href="javascript:void(0)" data-href="'+works[i].href+'" data-type="'+works[i].type+'" data-id="'+i+'">'+works[i].appName+'</a></h4>'+
 						'<div class="con">'+
-							'<span>'+works[i].appInfo+'</span>'+
+							'<span>项目简介：'+works[i].appInfo+'</span>'+
 						'</div>'+
 					'</li>';
 
 				html2+='<li>'+
 						'<h4><a href="javascript:void(0)" data-href="'+works[i].href+'" data-type="'+works[i].type+'" id="w_'+i+'">'+works[i].appName+'</a></h4>'+
 						'<div class="con">'+
-							'<span>'+works[i].appInfo+'</span>'+
+							'<span>项目简介：'+works[i].appInfo+'</span>'+
+						'</div>'+
+					'</li>';
+				html3+='<li>'+
+						'<h4><span class="icon-star-empty"></span><a href="javascript:void(0)" data-href="'+works[i].href+'" data-type="'+works[i].type+'" data-id="'+i+'" title="查看'+works[i].appName+'">'+works[i].time+'&nbsp;&nbsp;&nbsp;'+works[i].appName+'</a></h4>'+
+						'<div class="con">'+
+							'<span>项目简介：'+works[i].appInfo+'</span>'+
 						'</div>'+
 					'</li>';
 			}
 
 			$('#conShow').append(html);	
-			$('#cengShow').append(html2);	
+			$('#cengShow').append(html2);
+			$('#experience').append(html3);		
 
 
 			$('#parson').on({
@@ -202,8 +314,46 @@
 				}
 			});
 
+			$('#experience a').on('click',function(){
+				$('#myInfo').css('z-index','-1');
+				var href=$(this).attr('data-href');
+				var type=$(this).attr('data-type');
+				var id=$(this).attr('data-id');
+				
+				if(type=='phone'){
+					$('.phoneBox').show();
+					$('.ipadBox').hide();
+					$('#phone_f').attr('src',href);
+				}else{
+					$('.ipadBox').show();
+					$('.phoneBox').hide();
+					$('#ipad_f').attr('src',href);
+				}
+
+				$('#ceng').css('left','0');
+				window.location.href='#w_'+id;
+				
+				var allApps=$('#apps a');
+				for(var i=0;i<allApps.length;i++){
+					if($('#w_'+id)[0]==allApps[i]){
+						$(allApps[i]).css('color','#ff831e');
+					}else{
+						$(allApps[i]).css('color','#fff');
+					}
+				}
+			});
+
 			$('#close').on('click',function(){
 				$('#ceng').css('left','100%');
+				$('#myInfo').css('z-index','1');
+			});
+
+			$('#about').on('click',function(){
+				$('#myInfo').css('left','0');
+			});
+
+			$('#close2').on('click',function(){
+				$('#myInfo').css('left','100%');
 			});
 		});
 	</script>

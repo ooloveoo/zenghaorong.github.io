@@ -6,6 +6,7 @@ header nav{
 	position: fixed;
 	width: 100%;
 	top: 0;
+	box-sizing: border-box;
 }
 
 .name{
@@ -34,7 +35,6 @@ main aside{
 }
 main aside:first-child{
 	padding-left:20%;
-	padding-top:8%;  
 	width: 50%;
 }
 
@@ -50,7 +50,6 @@ main aside:first-child{
 	main aside:first-child{
 		padding-left:10%;
 		padding-top:5%;
-		
 	}
 }
 
@@ -88,7 +87,7 @@ h5{
 
 #appsShow #conShow{
 	height: 300px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .wrapper li{
@@ -186,7 +185,7 @@ footer a img{
 	margin: 0.6em 0;
 }
 
-
+.myInfo,
 .ceng{
 	position: fixed;
 	
@@ -218,7 +217,8 @@ footer a img{
 	background-color: #fff1b6;
 	float: right;
 	text-align: center;
-	overflow-y: scroll;
+	overflow-y: auto;
+	position: relative;
 }
 
 .ceng #apps,.ceng #contents{
@@ -229,6 +229,7 @@ footer a img{
 }
 
 /*滚动条*/
+.myInfo::-webkit-scrollbar-track,
 iframe::-webkit-scrollbar-track,
 #conShow::-webkit-scrollbar-track,
 #contents::-webkit-scrollbar-track,
@@ -238,6 +239,7 @@ iframe::-webkit-scrollbar-track,
 	
 }
 
+.myInfo::-webkit-scrollbar,
 iframe::-webkit-scrollbar,
 #conShow::-webkit-scrollbar,
 #contents::-webkit-scrollbar,
@@ -246,7 +248,7 @@ iframe::-webkit-scrollbar,
 	width: 8px;
 	background-color: rgba(255,255,255,.2);
 }
-
+.myInfo::-webkit-scrollbar-thumb,
 iframe::-webkit-scrollbar-thumb,
 #conShow::-webkit-scrollbar-thumb,
 #contents::-webkit-scrollbar-thumb,
@@ -257,9 +259,149 @@ iframe::-webkit-scrollbar-thumb,
 
 
 #apps {
-	overflow-y: scroll;
+	overflow-y: auto;
 	scrollbar-face-color:#13171a; /*滚动条3D表面（ThreedFace）的颜色*/ 
 	scrollbar-shadow-color:#626669; /*滚动条3D界面的暗边（ThreedShadow）颜色*/ 
 	scrollbar-arrow-color:#13171a; /*滚动条方向箭头的颜色 */ 
 	scrollbar-track-color:#626669; /*滚动条的拖动区域(TrackBar)颜色*/	
 }
+
+.about{
+	float: right;
+	color: #626669;
+}
+
+.close{
+	position: absolute;
+	display: inline-block;
+	
+	right: 20px;
+	top: 20px;
+	color: #13171a;
+	text-decoration: none;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	font-size: 1.2em;
+}
+
+.close:hover{
+	color: #ff831e;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+}
+
+/*myInfo*/
+.myInfo{
+	overflow-y:auto;
+	
+}
+.myInfo article{
+	position: relative;
+	padding: 4% 0;
+}
+#close2{
+	color: #fff;
+}
+.info_table{
+	display: block;
+	background-color: #fff;
+	width:842px;
+	margin: 0 auto;
+	padding: 3em 2em 3em 0; 
+	box-sizing: border-box;
+	font-size: 0.9em;
+}
+.info_table tbody,
+.info_table tr ,
+.info_table tr td{
+	display: block;
+}
+
+.sq{
+	border-left: 10px solid #27abf9;
+	padding: 0.5em 0 0.5em 1.2em;
+	color: #27abf9;
+	font-size: 1.1em;
+	margin:0.5em 0;
+}
+
+.info_con{
+	box-sizing: border-box;
+	padding: 1em 0 1em 2em;
+}
+
+.info_left,
+.info_center,
+.info_right{
+	display: inline-block;
+}
+.info_left{
+	float: left;
+}
+
+.info_con ul li{
+	padding: 0.5em 0;
+	color: #13171a;
+	font-size: 0.9em;
+}
+.info_con ul li strong{
+	letter-spacing: 1px;
+}
+.info_right{
+	float: right;
+}
+.clear{
+	
+	clear: both;
+}
+.info_right img{
+	width:140px; 
+}
+
+#experience .icon-star-empty{
+	position: relative;
+	top: -1px;
+	margin-right: 5px;
+}
+#experience h4{
+	padding: 0 1.9em;
+}
+
+#experience h4 a{
+	color: #13171a;
+}
+.xq,
+.skill,
+#experience .con{
+	padding: 0 4em;
+	font-size: 0.8em;
+	color: #13171a;
+	margin-bottom: 1em;
+}
+
+.skill img{
+	width: 30px;
+	position: relative;
+	margin-right: 5px;
+	display: inline-block;
+}
+.skill li{
+	padding: 0.5em 0;
+}
+.skill li span{
+	display: inline-block;
+	float: right;
+	width: 94%;
+	line-height: 24px;
+	letter-spacing: 1px;
+}
+.xq span{
+	margin-right:0.5em;
+}
+
