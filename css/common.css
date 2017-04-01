@@ -1,35 +1,52 @@
+
 body{
 	font-size: 16px;
-	background-color: #13171a;
 	line-height: 1;
-	font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+	font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,STheiTi,Arial,sans-serif;
 }
 body,ul{
 	padding: 0;
 	margin: 0;
 }
-ul{
+ul,ol{
 	list-style: none;
 }
-header,nav,main{display: block;}
-a,img{outline: none;}
+header,nav,main,article,section{display: block;}
+a,img{
+	outline: none;
+	-webkit-tap-highlight-color:transparent;
+}
 select,input,button{
 	outline: none;
 	border: none; 
 	-webkit-appearance:none;
 	background-color: transparent;
-	font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+	font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,STheiTi,Arial,sans-serif;
+}
+[data-dpr="ls"]{
+	font-size: 12px;
+}
+[data-dpr="s"]{
+	font-size: 14px;
 }
 
-@media(min-width: 375px){
-	body{
-		font-size: 17px;
-	}
+[data-dpr="m"]{
+	font-size: 16px;
 }
 
-@media(min-width: 410px){
+[data-dpr="l"]{
+	font-size: 18px;
+}
+
+.wrapper{
+	overflow-y:auto;
+	-webkit-overflow-scrolling:touch; 
+}
+
+@media(min-width: 414px){
 	body{
 		font-size: 18px;
 	}
 }
+
 
