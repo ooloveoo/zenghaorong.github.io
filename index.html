@@ -145,9 +145,7 @@
 	</section>
 	
 	<!-- shaow -->
-	<div class="shaow"></div>
-
-
+	
 	<script src="js/links.js"></script>
 	<script src="js/works.js"></script>
 	<script src="js/com.js"></script>
@@ -155,7 +153,29 @@
 	<script>
 
 
-		 
+		window.onload=function(){
+			
+
+			if(document.body.clientWidth > 600){
+				var f= query('.main');
+				var c= query('.main .links');
+
+				var h = document.body.scrollHeight || document.documentElement.scrollHeight;
+				f.style.height= h -50+'px';
+				c.style.width=(links.length  * 200)+'px';
+
+				document.body.onmousewheel = function(event) {
+				   	e = event || window.event;
+					    
+				    var scroll = e.wheelDelta;	
+				   	if( scroll < 0 ){
+				   		 f.scrollLeft += Math.abs(scroll);
+				   	}else{
+				   		f.scrollLeft -= Math.abs(scroll);
+				   	}
+				};
+			}
+		}
 
 		function showLinks(){
 			var html='';
@@ -193,10 +213,8 @@
 				removeClass(a,'rotate');
 			}
 			if(hasClass(o,'rotate')){
-				query('.shaow').style='opacity:0;z-index:1;';
 				removeClass(o,'rotate');
 			}else{
-				query('.shaow').style='opacity:1;z-index:4;';
 				addClass(o,'rotate');
 			}
 		};
@@ -205,7 +223,6 @@
 			var o=getId('about');
 			var c=getId('contact');
 			if(hasClass(c,'rotate')){
-				query('.shaow').style='opacity:0;z-index:1;';
 				removeClass(c,'rotate');
 			}
 			if(hasClass(o,'rotate')){
@@ -214,9 +231,6 @@
 				addClass(o,'rotate');
 			}
 		};
-
-		
-
 		showLinks();
 		exWorks();
 		

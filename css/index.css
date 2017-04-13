@@ -140,17 +140,13 @@ header nav section p{
 /*links*/
 .main{
 	background-color: #ddd;
-	position: fixed;
 	width: 100%;
-	top: 50px;
-	height: 100%;
-	bottom: 0;
 	z-index: 3;
+	overflow-x:auto; 
+	margin-top: 50px;
 }
 .main .links{
-	position: fixed;
 	height: 100%;
-	width: 100%;
 	overflow-x:auto; 
 	overflow-y: hidden;
 }
@@ -180,7 +176,7 @@ header nav section p{
 	transform: scale(1.02);
 	background-color: rgba(0,0,0,0.5);
 }
-.shaow{
+/*.shaow{
 	background-color: rgba(0,0,0,0.5);
 	position: fixed;
 	top: 0;
@@ -190,7 +186,7 @@ header nav section p{
 	transition: all 0.3s ease ;
 	z-index: 1;
 	opacity: 0;
-}
+}*/
 
 @media(max-width: 600px){
 	.main .links{
