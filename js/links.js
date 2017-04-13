@@ -27,7 +27,30 @@ var links=[
 		time:'2017-4-1',
 		color:'#2098D1',
 		href:'http://ianlunn.github.io/Hover/'
+	},
+	{
+		appName:'vue',
+		appInfo:'vue2.0构建单页应用最佳实战',
+		time:'2017-4-11',
+		color:'#02dab9',
+		href:'http://www.imooc.com/article/details/id/6991'
+	},
+	{
+		appName:'mint-ui',
+		appInfo:'基于vueJs 的一个UI框架',
+		time:'2017-4-11',
+		color:'#26a2ff',
+		href:'http://mint-ui.github.io/#!/zh-cn'
+	},
+	{
+		appName:'element-ui',
+		appInfo:'基于vue2.0 的一个桌面UI框架',
+		time:'2017-4-13',
+		color:'#80a8e1',
+		href:'http://element.eleme.io/#/zh-CN'
 	}
+
+	
 ];
 
 
