@@ -34,7 +34,6 @@ var links=[
 		time:'2017-4-11',
 		color:'#02dab9',
 		href:'http://www.imooc.com/article/details/id/6991'
-<<<<<<< HEAD
 	},
 	{
 		appName:'mint-ui',
@@ -49,11 +48,7 @@ var links=[
 		time:'2017-4-13',
 		color:'#80a8e1',
 		href:'http://element.eleme.io/#/zh-CN'
-=======
->>>>>>> origin/master
 	}
-
-	
 ];
 
 
