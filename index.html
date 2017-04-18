@@ -158,13 +158,14 @@
 
 			if(document.body.clientWidth > 600){
 				var f= query('.main');
-				var c= query('.main .links');
+				var c= query('#works');
 
-				var h = document.body.scrollHeight || document.documentElement.scrollHeight;
+				var h = document.documentElement.clientHeight || document.body.clientHeight  ;
+				
 				f.style.height= h -50+'px';
 				c.style.width=(links.length  * 200)+'px';
 
-				document.body.onmousewheel = function(event) {
+				c.onmousewheel = function(event) {
 				   	e = event || window.event;
 					    
 				    var scroll = e.wheelDelta;	

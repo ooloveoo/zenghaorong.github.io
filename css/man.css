@@ -8,6 +8,7 @@
 	box-sizing: border-box;
 	padding: 20px 0;
 	margin-bottom:50px;
+	text-align: left;
 }
 .myInfo_list{
 	padding: 20px;
@@ -17,6 +18,7 @@
 }
 .myInfo_list .con{
 	padding: 0 25px;
+	line-height: 1.4;
 }
 .sq{
 	border-left: 10px solid #27abf9;
