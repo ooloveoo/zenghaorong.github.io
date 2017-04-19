@@ -154,7 +154,8 @@
 
 
 		window.onload=function(){
-			
+			var contact=getId('contact');
+			var about=getId('about');
 
 			if(document.body.clientWidth > 600){
 				var f= query('.main');
@@ -176,6 +177,35 @@
 				   	}
 				};
 			}
+
+
+			query('.link[data-c="contact"]').onclick=function(){
+				
+				if(hasClass(about,'rotate')){
+					removeClass(about,'rotate');
+				}
+				if(hasClass(contact,'rotate')){
+					removeClass(contact,'rotate');
+				}else{
+					addClass(contact,'rotate');
+				}
+			};
+
+			query('.link[data-c="about"]').onclick=function(){
+				
+				if(hasClass(contact,'rotate')){
+					removeClass(contact,'rotate');
+				}
+				if(hasClass(about,'rotate')){
+					removeClass(about,'rotate');
+				}else{
+					addClass(about,'rotate');
+				}
+			};
+
+			showLinks();
+
+			exWorks();
 		}
 
 		function showLinks(){
@@ -207,33 +237,7 @@
 			getId('experience').innerHTML=html;
 		}
 
-		query('.link[data-c="contact"]').onclick=function(){
-			var o=getId('contact');
-			var a=getId('about');
-			if(hasClass(a,'rotate')){
-				removeClass(a,'rotate');
-			}
-			if(hasClass(o,'rotate')){
-				removeClass(o,'rotate');
-			}else{
-				addClass(o,'rotate');
-			}
-		};
-
-		query('.link[data-c="about"]').onclick=function(){
-			var o=getId('about');
-			var c=getId('contact');
-			if(hasClass(c,'rotate')){
-				removeClass(c,'rotate');
-			}
-			if(hasClass(o,'rotate')){
-				removeClass(o,'rotate');
-			}else{
-				addClass(o,'rotate');
-			}
-		};
-		showLinks();
-		exWorks();
+		
 		
 	</script>
 </body>

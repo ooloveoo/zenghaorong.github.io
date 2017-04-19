@@ -48,7 +48,16 @@ var links=[
 		time:'2017-4-13',
 		color:'#80a8e1',
 		href:'http://element.eleme.io/#/zh-CN'
+	},
+	{
+		appName:'vuex',
+		appInfo:'vuex的源码解析',
+		time:'2017-4-19',
+		color:'#feaa11',
+		href:'http://www.open-open.com/lib/view/open1479870023664.html'
 	}
+
+	
 ];
 
 
