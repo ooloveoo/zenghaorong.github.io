@@ -55,6 +55,20 @@ var links=[
 		time:'2017-4-19',
 		color:'#feaa11',
 		href:'http://www.open-open.com/lib/view/open1479870023664.html'
+	},
+	{
+		appName:'jquery',
+		appInfo:'jquery的源码解析',
+		time:'2017-4-19',
+		color:'#abdbe7',
+		href:'http://www.cnblogs.com/aaronjs/p/3279314.html'
+	},
+	{
+		appName:'jqueryAPI',
+		appInfo:'jqueryAPI在线文档',
+		time:'2017-4-19',
+		color:'#ffc2c1',
+		href:'http://www.css88.com/jqapi-1.9/'
 	}
 
 	
