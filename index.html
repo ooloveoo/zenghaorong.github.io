@@ -2,239 +2,367 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1" />
-	<meta name="format-detection" content="telephone=no" /> 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<title>Welcome To My Homepage!</title>
-	
-	<link rel="stylesheet" href="css/myfont.css">
-	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/man.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>服务评价指标</title>
+	<link rel="stylesheet" href="css/com.css">
 	<link rel="stylesheet" href="css/index.css">
+	
 </head>
 <body>
 	<header>
-		<nav data-dpr="s">
-
-			<a href="#" class="link" data-c='about'>
-				<span>about</span>
-				<span>about</span>
-			</a>
-			<a href="#" class="logo">
-				<span class="one"></span>
-				<span class="two"></span>
-				<span class="three"></span>
-				<span class="fore"></span>
-			</a>
-			<a href="#" class="link" data-c='contact'>
-				<span>contact</span>
-				<span>contact</span>
-			</a>
-
-			<section id="contact">
-				<h2>Welcome To My Homepage!</h2>
-				<p>Phone：<span>(+86) 13774365605</span></p>
-				<p>E-mail：<span>zenghaorong123@sina.com</span></p>
-			</section>
-			<section id="about">
-				
-				<article class="myInfo">
-						<h4 class="sq" data-dpr="m">基本资料</h4>
-						<div class="myInfo_list">
-							
-							<div class="info_con" data-dpr='s'>
-								<div class="info_left">
-									<ul>
-										<li>
-											<span>姓&nbsp;&nbsp;&nbsp;名：<strong>曾浩荣</strong></span>	
-										</li>
-										<li>
-											<span>手&nbsp;&nbsp;&nbsp;机：<strong>13174365605</strong></span>		
-										</li>
-										<li>
-											<span>籍&nbsp;&nbsp;&nbsp;贯：<strong>湖北省汉川市</strong></span>	
-										</li>
-										<li>				
-											<span>E-mail：<strong>zenghaorong123@sina.com</strong></span>
-										</li>
-										<li>
-											<span>个人主页：<strong>www.zenghaorong.cn</strong></span>
-										</li>
-									</ul>
-								</div>
-								<div class="info_center">
-									<ul>
-										<li>
-											<span>出生日期：<strong>1992-06-26</strong></span>	
-										</li>
-										<li>	
-											<span>毕业学校：<strong>湖北工程学院（2014级本科）</strong></span>
-										</li>
-										<li>
-											<span>现&nbsp;住&nbsp;址：<strong>上海市浦东新区三林新村</strong></span>
-										</li>
-									</ul>
-								</div>
-								<div class="info_right">
-									<img src="images/me.jpg" title="曾浩荣">					
-								</div>
-								
-							</div>
-							
-						</div>
-
-						<h4 class="sq" data-dpr="m">项目经验</h4>
-						<div class="myInfo_list">
-							<ul id="experience"></ul>
-						</div>
-
-						<h4 class="sq">专业技能</h4>
-						<div class="myInfo_list">
-							<ul class="skill">
-								<li>
-									<img src="images/read.png" >
-									<span>高速的阅读和学习能力</span>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<img src="images/h5.png" >
-									<span>较丰富的移动前端开发，熟练掌握html+css+js技术和相关的框架,对angularJS、ionic、vueJs、phonegap有一定的了解。熟悉android和ios与html之间的交互；做过微信小程序的独立开发</span>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<img src="images/java.png" >
-									<span>熟悉java知识，懂得前端与后台之间数据的传递;了解ssh三大框架和servlet;了解一些nodejs相关知识</span>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<img src="images/db.png" >
-									<span>对mysql和oracle数据库有一定了解</span>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<img src="images/ps.png" >
-									<span>做过平面设计，了解ps、cdr等平面开发工具</span>
-									<div class="clear"></div>
-								</li>
-							</ul>
-								
-							
-						</div>
-
-						<h4 class="sq" data-dpr="m">个人爱好</h4>
-						<div class="myInfo_list">
-							<div class="xq">
-								<span>体育运动</span>
-								<span>电子竞技</span>
-								<span>美食</span>
-								<span>证券</span>
-							</div>
-							
-						</div>
-					
-				</article>
-				
-			</section>
-		</nav>
+		<button class="back"></button>
+		<div class="jg">
+			<div class="jg-con"><span>全司</span></div>
+		</div>
+		<span>服务评价指标</span>
 	</header>
-
-	<!-- works -->
-	<section class="main">
-		<div id="works" class="links"></div>
+	<nav>
+		
+	</nav>
+	
+	<section class="type-choose">
+		<label class="chooseed">
+			<input type="radio" name="typeRadio" value="0" >
+			<span>本日</span>
+		</label>
+		<label>
+			<input type="radio" name="typeRadio" value="1">
+			<span>本月</span>
+		</label>
+		<label>
+			<input type="radio" name="typeRadio" value="2">
+			<span>本年</span>
+		</label>
 	</section>
-	
-	<!-- shaow -->
-	
-	<script src="js/links.js"></script>
-	<script src="js/works.js"></script>
-	<script src="js/com.js"></script>
 
-	<script>
-
-
-		window.onload=function(){
-			var contact=getId('contact');
-			var about=getId('about');
-
-			if(document.body.clientWidth > 600){
-				var f= query('.main');
-				var c= query('#works');
-
-				var h = document.documentElement.clientHeight || document.body.clientHeight  ;
-				
-				f.style.height= h -50+'px';
-				c.style.width=(links.length  * 200)+'px';
-
-				c.onmousewheel = function(event) {
-				   	e = event || window.event;
-					    
-				    var scroll = e.wheelDelta;	
-				   	if( scroll < 0 ){
-				   		 f.scrollLeft += Math.abs(scroll);
-				   	}else{
-				   		f.scrollLeft -= Math.abs(scroll);
-				   	}
-				};
-			}
-
-
-			query('.link[data-c="contact"]').onclick=function(){
-				
-				if(hasClass(about,'rotate')){
-					removeClass(about,'rotate');
-				}
-				if(hasClass(contact,'rotate')){
-					removeClass(contact,'rotate');
-				}else{
-					addClass(contact,'rotate');
-				}
-			};
-
-			query('.link[data-c="about"]').onclick=function(){
-				
-				if(hasClass(contact,'rotate')){
-					removeClass(contact,'rotate');
-				}
-				if(hasClass(about,'rotate')){
-					removeClass(about,'rotate');
-				}else{
-					addClass(about,'rotate');
-				}
-			};
-
-			showLinks();
-
-			exWorks();
-		}
-
-		function showLinks(){
-			var html='';
-			for(var i=0;i<links.length;i++){
-				html+='<section style="background-color:'+links[i].color+'"><a href="'+links[i].href+'" target="_blank">'+
-							'<span class="time" data-dpr="s">'+links[i].time+'</span>'+
-							'<h3>'+links[i].appName+'</h3>'+
-							'<p data-dpr="s">'+links[i].appInfo+'</p></a>'+
-						'</section>';
-			}
-
-			getId('works').innerHTML=html;
+	<section class="content">
+		<ul>
+			<li>
+				<span>出险支付时效</span>
+				<strong>
+					<span>73.20</span><i>天</i>
+				</strong>
+			</li>
+			<li>
+				<span>申请支付时效</span>
+				<strong>
+					<span>2.96</span><i>天</i>
+				</strong>
+			</li>
+			<li>
+				<span>犹豫期内电话回访成功率</span>
+				<strong>
+					<span>96.21</span><i>%</i>
+				</strong>
+			</li>
+			<li>
+				<span>亿元保费投诉量</span>
+				<strong>
+					<span>0.1324</span><i>件</i>
+				</strong>
+			</li>
+			<li>
+				<span>万张保单投诉量</span>
+				<strong>
+					<span>2.331</span><i>件</i>
+				</strong>
+			</li>
 			
+			<li>
+				<span>保单15日送达率</span>
+				<strong>
+					<span>96.23</span><i>%</i>
+				</strong>
+			</li>
+			<li>
+				<span>保全时效</span>
+				<strong>
+					<span>1.01</span><i>天</i>
+				</strong>
+			</li>
+			<li>
+				<span>理赔获赔率</span>
+				<strong>
+					<span>97.38</span><i>%</i>
+				</strong>
+			</li>
+			<li>
+				<span>投诉案件处理及时率</span>
+				<strong>
+					<span>100</span><i>%</i>
+				</strong>
+			</li>
+			<li>
+				<span>电话呼入人工接通率</span>
+				<strong>
+					<span>77.62</span><i>%</i>
+				</strong>
+			</li>
+		</ul>
+	</section>
+	<footer>
+		<label class="qs2">
+			<input type="radio" name="qdRadio" value="0">
+			<i></i>
+			<span>全司</span>
+		</label>
+		<label class="gx">
+			<input type="radio" name="qdRadio" value="1">
+			<i></i>
+			<span>个险</span>
+		</label>
+		<label class="fq">
+			<input type="radio" name="qdRadio" value="2">
+			<i></i>
+			<span>健养+渠道</span>
+		</label>
+		<label class="dx">
+			<input type="radio" name="qdRadio" value="3">
+			<i></i>
+			<span>电网销</span>
+		</label>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			var h = $(document).height();
+			var hh = $('header').height();
+			var nh = $('nav').height();
+			var th = $('.type-choose').height();
+			var fh = $('footer').height();
+			$('.content').css('height',( h - hh- nh- th -fh - 20)+'px');
+
+			//解决从详情页 返回时 第一个值不会被选中的 bug
+			$('input[name="typeRadio"]')[0].checked = true;
+			$('input[name="qdRadio"]')[0].checked = true;
+
+			$('nav').html(chooseDay());
+
+
+			
+			var level = 1;//当前操作员机构等级 1--总公司,2--分公司,3--中支公司,4--四级机构
+
+
+			queryData();
+			
+			//给指标绑定点击事件
+			$('.content li').on('click',function(){
+
+				var type = $('input[name="typeRadio"]:checked').val(),//本日、本月、本年选择
+					dateType = $('input[name="dateRadio"]:checked').val();//时间选择
+					
+				if( type == '1'){
+					dateType = dateType.replace(/^[0]/,'') + '月';
+				}else if(type == '2'){
+					dateType+='年';
+				}
+				sessionStorage['day'] = dateType;
+				//根据不同的机构等级 来存不同的qdType 
+				sessionStorage['qdType'+level] = $('input[name="qdRadio"]:checked').val();
+				window.location.href = getUrl(level);
+			});
+
+			//时间选择
+			$('nav').delegate('input[name="dateRadio"]','change',function(){
+
+				console.log($(this).val());
+
+				var label = $(this).parent();
+				$('nav').find('label').each(function(index,item){
+					if(item == label[0]){
+						$(item).addClass('weekAndDate');
+					}else{
+						$(item).removeClass('weekAndDate');
+					}
+				});
+			});
+
+			//本日、本月、本年选择
+			$('.type-choose').delegate('input[name="typeRadio"]','change',function(){
+
+				var val = $(this).val();
+				var label = $(this).parent();
+				$('.type-choose').find('label').each(function(index,item){
+					if(item == label[0]){
+						$(item).addClass('chooseed');
+					}else{
+						$(item).removeClass('chooseed');
+					}
+				});
+				
+				if(val == '0'){
+					$('nav').html(chooseDay());
+				}else if(val == '1'){
+					$('nav').html(chooseMonth());
+				}else{
+					$('nav').html(chooseYear());
+				}
+				
+			});
+
+			//渠道选择
+			$('footer').delegate('input[name="qdRadio"]','change',function(){
+
+				console.log($(this).val());
+				var label = $(this).parent();
+
+				$('footer').find('label').each(function(index,item){
+
+					var className = item.className;
+
+					if(item == label[0]){
+						item.className = className+'2';
+					}else{
+						item.className = className.replace('2','');
+					}
+				});
+
+			});
+
+		});
+
+		/**
+		 * 查询数据
+		 */
+		function queryData(){
+
+
+			var dateRadio = $('input[name="dateRadio"]:checked').val(), //时间选择 的默认值
+				qdRadio = $('input[name="qdRadio"]:checked').val();//渠道选择 的默认值
+
+			//....ajax
+			var list = ['73.20','2.96','0.1324','2.331','96.21','96.23','97.38','1.01','100'];
 		}
 
-		function exWorks(){
-			var html='';
-			for (var i =0; i<works.length ; i++) {
+		/**
+		 * 获取跳转的url
+		 * lev 操作员机构等级
+		 * return url
+		 */
+		function getUrl(lev){
+			var url = '';
+			if(lev == 1){
+				url = 'pInfo2.html';
+			}else if(lev == 2){
+				url = 'pInfo3.html';
+			}else if(lev == 3){
+				url = 'pInfo4.html';
+			}
+			return url;
+		}
+
+		/**
+		 * 选择天
+		 */
+		function chooseDay(){
+			var weekList = {
+				'1':'星期一',
+				'2':'星期二',
+				'3':'星期三',
+				'4':'星期四',
+				'5':'星期五',
+				'6':'星期六',
+				'0':'星期日',
+			};
+
+			var d = new Date(),arr = new Array();
+			d.setDate(d.getDate()-1);//t-1天
+
+			for(var i = 4 ; i >= 0 ; i--){
+
+				var month = d.getMonth() + 1,
+					day = d.getDate(),
+					week = d.getDay();
+				if(i != 4){
+					arr[i] ='<label>'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month) +'-'+ ft(day)+'" >'+
+						'<span>'+ ft(month) +'-'+ ft(day)+'</span>'+
+						'<span class="week">'+weekList[week]+'</span>'+
+					'</label>';
+				}else{
+					arr[i] ='<label class="weekAndDate">'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month) +'-'+ ft(day)+'" checked="checked">'+
+						'<span>'+ ft(month) +'-'+ ft(day)+'</span>'+
+						'<span class="week">'+weekList[week]+'</span>'+
+					'</label>';
+				}
 				
-				html+='<li>'+
-							'<h5 data-dpr="s"><span class="icon-star-empty"></span>'+works[i].time+'&nbsp;&nbsp;&nbsp;'+works[i].appName+'</h5>'+
-							'<div class="con">'+
-								'<span>项目简介：'+works[i].appInfo+'</span>'+
-							'</div>'+
-						'</li>';
+				
+				d.setDate(day-1);
+			}
+			return arr.join('');
+
+		}
+
+		/**
+		 * 选择月
+		 */
+		function chooseMonth(){
+			var d = new Date(),arr = new Array();
+			if(d.getDate() == 1){//如果今天为当月1号 则月份为上一个月
+				d.setMonth(d.getMonth()-1);
+			}
+			d.setDate(27);//加这一句是为了解决 Date对象 setMonth() 时间溢出bug
+
+			for(var i = 4 ; i >= 0 ; i--){
+				var month = d.getMonth();
+
+				if(i != 4){
+					arr[i] ='<label>'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" >'+
+						'<span>'+ (month+1) +'</span>'+
+						'<span>月</span>'+
+					'</label>';
+				}else{
+					arr[i] ='<label class="weekAndDate">'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" checked="checked">'+
+						'<span>'+ (month+1) +'</span>'+
+						'<span>月</span>'+
+					'</label>';
+				}
+				
+
+				
+				d.setMonth(month - 1);
+			}
+			return arr.join('');
+		}
+
+		/**
+		 * 选择年
+		 */
+		function chooseYear(){
+			var d = new Date(),arr = new Array();
+			if(d.getMonth() == 0 && d.getDate() == 1){//如果今天为1月1号 则年份为上一年
+				d.setYear(d.getFullYear() - 1);
 			}
 
-			getId('experience').innerHTML=html;
+			var len = d.getFullYear() - 2016;//数据重2016年开始
+
+			for(var i = len ; i >= 0 ; i--){
+				var year = d.getFullYear();
+				if(i != len){
+					arr[i] ='<label>'+
+						'<input type="radio" name="dateRadio" value="'+ year +'" >'+
+						'<span>'+ year +'</span>'+
+						'<span>年</span>'+
+					'</label>';
+				}else{
+					arr[i] ='<label class="weekAndDate">'+
+						'<input type="radio" name="dateRadio" value="'+ year +'" checked="checked">'+
+						'<span>'+ year +'</span>'+
+						'<span>年</span>'+
+					'</label>';
+				}
+				
+
+				d.setYear(d.getFullYear() - 1);
+			}
+			return arr.join('');
+		}
+
+		function ft(val){
+			return val > 9 ? val : '0' + val; 
 		}
 
 	</script>

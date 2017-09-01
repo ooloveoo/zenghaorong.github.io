@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>分公司详情</title>
+	<link rel="stylesheet" href="css/com.css">
+	<link rel="stylesheet" href="css/info.css">
+</head>
+<body>
+	<header>
+		<button class="back"></button>
+		<button class="home"></button>
+		<span>指标详细信息</span>
+	</header>
+	
+	<nav>
+		<span>机构</span>
+		<span>排名</span>
+		<span id="dateType">本日</span>
+		<span>同比</span>
+	</nav>
+
+	<!-- 机构、排名、本日/本月/本年  同比 -->
+	<section class="content">
+		<ul id="result">
+			
+			
+		</ul>
+	</section>
+
+	<footer>
+		<label class="qs">
+			<input type="radio" name="qdRadio" value="0" >
+			<i></i>
+			<span>全司</span>
+		</label>
+		<label class="gx">
+			<input type="radio" name="qdRadio" value="1">
+			<i></i>
+			<span>个险</span>
+		</label>
+		<label class="fq">
+			<input type="radio" name="qdRadio" value="2">
+			<i></i>
+			<span>健养+渠道</span>
+		</label>
+		<label class="dx">
+			<input type="radio" name="qdRadio" value="3">
+			<i></i>
+			<span>电网销</span>
+		</label>
+	</footer>
+
+	<script src="js/jquery.min.js"></script>
+	<script>
+
+		var dataSet1 = [
+			['0000000000000','全司','-','100','130'],
+			['0000000000001','安徽分公司','10','20','30'],
+			['0000000000002','北京分公司','2','50','60'],
+			['0000000000003','常州分公司','1','30','-40'],
+			['0000000000004','大连分公司','3','20','30'],
+			['0000000000005','福建分公司','4','50','-60'],
+			['0000000000006','甘肃分公司','5','30','40'],
+			['0000000000007','广东分公司','6','20','30'],
+			['0000000000008','广西分公司','82','50','60'],
+			['0000000000009','贵州分公司','7','30','-40'],
+			['00000000000010','海南分公司','9','50','-60'],
+			['00000000000011','河北分公司','11','30','-40']
+		];
+
+		$(function(){
+
+			var day = sessionStorage.day,//取pIndex.html缓存的 时间
+				qdType1 = sessionStorage.qdType1;//取pIndex.html缓存的 渠道
+
+			//给 （本日、本月、本年） 赋值
+			$('#dateType').html( day );
+
+			//给 渠道赋值
+			$('input[name="qdRadio"]').each(function(index,item){
+				if(item.value == qdType1){
+					item.checked = true;
+					$(item).parent()[0].className = $(item).parent()[0].className+'2';
+				}
+			});
+
+			//返回 上一页
+			$('.back').on('click',function(){
+				history.back(0);
+			});
+			//返回 首页
+			$('.home').on('click',function(){
+				location.href = 'index.html';
+			});
+
+			//渠道选择 委托change事件
+			$('footer').delegate('input[name="qdRadio"]','change',function(){
+				var label = $(this).parent();
+
+				$('footer').find('label').each(function(index,item){
+					var className = item.className;
+					if(item == label[0]){
+						item.className = className+'2';
+					}else{
+						item.className = className.replace('2','');
+					}
+				});
+
+				//查询数据
+				queryData();
+
+			});
+
+			//给每条数据 委托点击事件
+			$('#result').delegate('.isClicked','click',function(){
+
+				sessionStorage['branch2'] = $(this).attr('data-branch'); //分公司机构号
+				sessionStorage['qdType2'] = $('input[name="qdRadio"]:checked').val(); //pInfo2.html 存qdType2
+
+				window.location.href = 'pInfo3.html';
+			});
+
+			queryData();
+		});
+
+		/**
+		 * 查询数据
+		 */
+		function queryData(){
+			//....ajax
+			$('#result').html( dataDeal(dataSet1) );
+		}
+
+		//时间处理
+		function getDateType(val){
+			var  t = '';
+			if(val == '0'){
+				t = '本日';
+			}else if(val == '1'){
+				t = '本月';
+			}else if(val == '2'){
+				t = '本年';
+			}
+			return t;
+		}
+
+		
+
+        /**
+            数据处理
+            list 数据源
+            return 处理好的html
+        **/
+        function dataDeal(list) {
+            var html = '';
+            for (var i = 0; i < list.length; i++) {
+            	if(i != 0){
+            		html += '<li data-branch="'+list[i][0]+'" class="isClicked"><div class="content-items">';
+            	}else{
+            		html += '<li data-branch="'+list[i][0]+'" class="first"><div class="content-items">';
+            	}
+                
+            	var item = list[i];
+                for (var j = 1;j<item.length;j++) {
+                	if(j != item.length-1){
+                		html += '<span>' + item[j] + '</span>';
+                	}else{
+                		html += '<span style="color:'+ (item[j] > 0 ? '#2a57ae;' : '#e88d00') +'" >' + item[j] + '</span>';
+                	}
+                }
+                html += '</div></li>';
+            }
+            return html;
+        }
+
+        /**
+            获取超链接传递过来的值
+        */
+        function getUrlPara(paraName) {
+            var sUrl = location.href;
+            var sReg = "(?:\\?|&){1}" + paraName + "=([^&]*)";
+            var re = new RegExp(sReg, "gi");
+            var a = re.exec(sUrl);
+            return a ? a[1] : null;
+
+        }
+
+	</script>
+</body>
+</html>

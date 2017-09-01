@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>四级机构详情</title>
+	<link rel="stylesheet" href="css/com.css">
+	<link rel="stylesheet" href="css/info.css">
+	
+</head>
+<body>
+	<header>
+		<button class="back"></button>
+		<button class="home"></button>
+		<span>指标详细信息</span>
+	</header>
+	
+	<nav>
+		<span>机构</span>
+		<span>排名</span>
+		<span id="dateType">本日</span>
+		<span>同比</span>
+	</nav>
+
+	<!-- 机构、排名、本日/本月/本年  同比 -->
+	<section class="content">
+		<ul id="result">
+			
+		</ul>
+	</section>
+
+	<footer>
+		<label class="qs">
+			<input type="radio" name="qdRadio" value="0" >
+			<i></i>
+			<span>全司</span>
+		</label>
+		<label class="gx">
+			<input type="radio" name="qdRadio" value="1">
+			<i></i>
+			<span>个险</span>
+		</label>
+		<label class="fq">
+			<input type="radio" name="qdRadio" value="2">
+			<i></i>
+			<span>健养+渠道</span>
+		</label>
+		<label class="dx">
+			<input type="radio" name="qdRadio" value="3">
+			<i></i>
+			<span>电网销</span>
+		</label>
+	</footer>
+
+	<script src="js/jquery.min.js"></script>
+	<script>
+	
+		var dataSet1 = [
+			['0000000000002','安庆中心支公司','-','80','9'],
+			['0000000000001','安庆中心支公司潜山营销服务部','1','90','10'],
+			['0000000000002','安庆中心支公司宿松营销服务部','2','80','9'],
+			['0000000000003','安庆中心支公司桐城营销服务部','3','70','8'],
+			['0000000000001','安庆中心支公司孝肃路营销服务部','4','60','7'],
+			['0000000000002','安庆中心支公司岳西营销服务部','2','50','6'],
+			['0000000000003','安庆中支本部','6','40','5'],
+			['0000000000001','怀宁支公司','7','30','4'],
+			['0000000000002','太湖支公司','8','20','3'],
+			['0000000000003','望江支公司','9','10','2'],
+		];
+
+		$(function(){
+
+			var day = sessionStorage.day,//取pIndex.html缓存的 时间
+				qdType3 = sessionStorage.qdType3,//取pInfo3.html缓存的 渠道
+				branch3 = sessionStorage.branch3;//三级机构 机构号
+
+			//给 （本日、本月、本年） 赋值
+			$('#dateType').html( day );
+
+			//给 渠道赋值
+			$('input[name="qdRadio"]').each(function(index,item){
+				if(item.value == qdType3){
+					item.checked = true;
+					$(item).parent()[0].className = $(item).parent()[0].className+'2';
+				}
+			});
+
+			//返回 上一页
+			$('.back').on('click',function(){
+				history.back(0);
+			});
+			//返回 首页
+			$('.home').on('click',function(){
+				window.location.href = 'index.html';
+			});
+
+			//渠道选择 委托change事件
+			$('footer').delegate('input[name="qdRadio"]','change',function(){
+				var label = $(this).parent();
+
+				$('footer').find('label').each(function(index,item){
+					var className = item.className;
+					if(item == label[0]){
+						item.className = className+'2';
+					}else{
+						item.className = className.replace('2','');
+					}
+				});
+
+				//查询数据
+				queryData();
+
+			});
+
+			queryData();
+		});
+
+		/**
+		 * 查询数据
+		 */
+		function queryData(){
+			//....ajax
+			$('#result').html( dataDeal(dataSet1) );
+		}
+
+		//时间处理
+		function getDateType(val){
+			var  t = '';
+			if(val == '0'){
+				t = '本日';
+			}else if(val == '1'){
+				t = '本月';
+			}else if(val == '2'){
+				t = '本年';
+			}
+			return t;
+		}
+
+        /**
+            数据处理
+            list 数据源
+            return 处理好的html
+        **/
+        function dataDeal(list) {
+            var html = '';
+            for (var i = 0; i < list.length; i++) {
+                if(i != 0){
+            		html += '<li data-branch="'+list[i][0]+'" class="isClicked"><div class="content-items">';
+            	}else{
+            		html += '<li data-branch="'+list[i][0]+'" class="first"><div class="content-items">';
+            	}
+                var item = list[i];
+                for (var j = 1;j<item.length;j++) {
+                	if(j != item.length-1){
+                		html += '<span>' + item[j] + '</span>';
+                	}else{
+                		html += '<span style="color:'+ (item[j] > 0 ? '#2a57ae;' : '#e88d00') +'" >' + item[j] + '</span>';
+                	}
+                }
+                html += '</div></li>';
+            }
+            return html;
+        }
+
+	</script>
+</body>
+</html>
