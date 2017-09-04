@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<title>四级机构详情</title>
+	<title>指标详情</title>
 	<link rel="stylesheet" href="css/com.css">
 	<link rel="stylesheet" href="css/info.css">
 	
@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div class="hLeft"><button class="back"></button></div>
-		<div class="hCenter"><span>指标详细信息</span></div>
+		<div class="hCenter"><span id="hTitle"></span></div>
 		<div class="hRight hr"><button class="home"></button></div>
 	</header>
 	
@@ -76,6 +76,9 @@
 
 			//给 （本日、本月、本年） 赋值
 			$('#dateType').html( day );
+
+			//给hTitle赋值
+			$('#hTitle').text(decodeURI(sessionStorage.title));
 
 			//给 渠道赋值
 			$('input[name="qdRadio"]').each(function(index,item){

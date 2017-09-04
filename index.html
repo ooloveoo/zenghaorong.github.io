@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<title>服务评价指标</title>
+	<title>服务评价指标报表</title>
 	<link rel="stylesheet" href="css/com.css">
 	<link rel="stylesheet" href="css/index.css">
 	
@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div class="hLeft"><button class="back"></button></div>
-		<div class="hCenter"><span>服务评价指标</span></div>
+		<div class="hCenter"><span>服务评价指标报表</span></div>
 		<div class="hRight jg">
 			<div class="jg-con"><span>全司</span></div>
 		</div>
@@ -38,62 +38,62 @@
 
 	<section class="content">
 		<ul>
-			<li>
+			<li data-title="出险支付时效">
 				<span>出险支付时效</span>
 				<strong>
 					<span>73.20</span><i>天</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="申请支付时效">
 				<span>申请支付时效</span>
 				<strong>
 					<span>2.96</span><i>天</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="犹豫期内电话回访成功率">
 				<span>犹豫期内电话回访成功率</span>
 				<strong>
 					<span>96.21</span><i>%</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="亿元保费投诉量">
 				<span>亿元保费投诉量</span>
 				<strong>
 					<span>0.1324</span><i>件</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="万张保单投诉量">
 				<span>万张保单投诉量</span>
 				<strong>
 					<span>2.331</span><i>件</i>
 				</strong>
 			</li>
 			
-			<li>
+			<li data-title="保单15日送达率">
 				<span>保单15日送达率</span>
 				<strong>
 					<span>96.23</span><i>%</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="保全时效">
 				<span>保全时效</span>
 				<strong>
 					<span>1.01</span><i>天</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="理赔获赔率">
 				<span>理赔获赔率</span>
 				<strong>
 					<span>97.38</span><i>%</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="投诉案件处理及时率">
 				<span>投诉案件处理及时率</span>
 				<strong>
 					<span>100</span><i>%</i>
 				</strong>
 			</li>
-			<li>
+			<li data-title="电话呼入人工接通率">
 				<span>电话呼入人工接通率</span>
 				<strong>
 					<span>77.62</span><i>%</i>
@@ -158,6 +158,7 @@
 					dateType+='年';
 				}
 				sessionStorage['day'] = dateType;
+				sessionStorage['title'] = $(this).attr('data-title');
 				//根据不同的机构等级 来存不同的qdType 
 				sessionStorage['qdType'+level] = $('input[name="qdRadio"]:checked').val();
 				window.location.href = getUrl(level);
