@@ -10,11 +10,12 @@
 </head>
 <body>
 	<header>
-		<button class="back"></button>
-		<div class="jg">
+		<div class="hLeft"><button class="back"></button></div>
+		<div class="hCenter"><span>服务评价指标</span></div>
+		<div class="hRight jg">
 			<div class="jg-con"><span>全司</span></div>
 		</div>
-		<span>服务评价指标</span>
+		
 	</header>
 	<nav>
 		
@@ -146,7 +147,7 @@
 			queryData();
 			
 			//给指标绑定点击事件
-			$('.content li').on('click',function(){
+			$('.content').delegate('li','click',function(){
 
 				var type = $('input[name="typeRadio"]:checked').val(),//本日、本月、本年选择
 					dateType = $('input[name="dateRadio"]:checked').val();//时间选择
@@ -311,13 +312,13 @@
 					arr[i] ='<label>'+
 						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" >'+
 						'<span>'+ (month+1) +'</span>'+
-						'<span>月</span>'+
+						'<span class="week">月</span>'+
 					'</label>';
 				}else{
 					arr[i] ='<label class="weekAndDate">'+
 						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" checked="checked">'+
 						'<span>'+ (month+1) +'</span>'+
-						'<span>月</span>'+
+						'<span class="week">月</span>'+
 					'</label>';
 				}
 				
@@ -345,13 +346,13 @@
 					arr[i] ='<label>'+
 						'<input type="radio" name="dateRadio" value="'+ year +'" >'+
 						'<span>'+ year +'</span>'+
-						'<span>年</span>'+
+						'<span class="week">年</span>'+
 					'</label>';
 				}else{
 					arr[i] ='<label class="weekAndDate">'+
 						'<input type="radio" name="dateRadio" value="'+ year +'" checked="checked">'+
 						'<span>'+ year +'</span>'+
-						'<span>年</span>'+
+						'<span class="week">年</span>'+
 					'</label>';
 				}
 				
