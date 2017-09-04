@@ -41,6 +41,7 @@ header .hLeft{
 }
 header .jg{
 	height: 100%;
+	text-align: right;
 }
 header .hr{
 	line-height: 100%;
@@ -56,7 +57,9 @@ header .back,header .home{
 }
 
 header .jg .jg-con{
+	display: inline-block;
 	position: relative;
+	top: -0.7em;
 	background-color: rgba(255,255,255,0.7);
 	height: 3.5em;
 	line-height: 3.5em;
