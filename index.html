@@ -126,24 +126,23 @@
 	<script src="js/jquery.min.js"></script>
 	<script>
 		$(function(){
+			$('nav').html(chooseDay());
+
+			//先填充nav 在计算高度
 			var h = $(document).height();
-			var hh = $('header').height();
-			var nh = $('nav').height();
-			var th = $('.type-choose').height();
-			var fh = $('footer').height();
+			var hh = $('header')[0].clientHeight;
+			var nh = $('nav')[0].clientHeight;
+			var th = $('.type-choose')[0].clientHeight;
+			var fh = $('footer')[0].clientHeight;
 			$('.content').css('height',( h - hh- nh- th -fh - 20)+'px');
 
 			//解决从详情页 返回时 第一个值不会被选中的 bug
 			$('input[name="typeRadio"]')[0].checked = true;
 			$('input[name="qdRadio"]')[0].checked = true;
 
-			$('nav').html(chooseDay());
-
-
 			
 			var level = 1;//当前操作员机构等级 1--总公司,2--分公司,3--中支公司,4--四级机构
-
-
+			
 			queryData();
 			
 			//给指标绑定点击事件
@@ -340,6 +339,9 @@
 			}
 
 			var len = d.getFullYear() - 2016;//数据重2016年开始
+			if(len > 4){//最大显示5年
+				len = 4;
+			}
 
 			for(var i = len ; i >= 0 ; i--){
 				var year = d.getFullYear();
