@@ -74,8 +74,9 @@ nav label span.week{
 .content-box .content-title{
 	background-color: #007aff;
 	padding: 0 5px;
-    height: 3.5em;
-    line-height: 3.5em;
+    height: 3.8em;
+    line-height: 3.8em;
+    border-radius: 8px 8px 0 0;
 }
 .content-box .content-title,
 .content-box ul li{
