@@ -6,14 +6,15 @@
 	<title>服务评价指标报表</title>
 	<link rel="stylesheet" href="css/com.css">
 	<link rel="stylesheet" href="css/index.css">
-	
+	<link rel="stylesheet" href="css/swiper-3.4.0.min.css">
+
 </head>
 <body>
 	<header>
 		<div class="hLeft"><button class="back"></button></div>
 		<div class="hCenter"><span>服务评价指标报表</span></div>
 		<div class="hRight jg">
-			<div class="jg-con"><span>全司</span></div>
+			<div class="jg-con" id="branchNo"><span>全司</span></div>
 		</div>
 		
 	</header>
@@ -37,69 +38,47 @@
 	</section>
 
 	<section class="content">
-		<ul>
-			<li data-title="出险支付时效">
-				<span>出险支付时效</span>
-				<strong>
-					<span>73.20</span><i>天</i>
-				</strong>
-			</li>
-			<li data-title="申请支付时效">
-				<span>申请支付时效</span>
-				<strong>
-					<span>2.96</span><i>天</i>
-				</strong>
-			</li>
-			<li data-title="犹豫期内电话回访成功率">
-				<span>犹豫期内电话回访成功率</span>
-				<strong>
-					<span>96.21</span><i>%</i>
-				</strong>
-			</li>
-			<li data-title="亿元保费投诉量">
-				<span>亿元保费投诉量</span>
-				<strong>
-					<span>0.1324</span><i>件</i>
-				</strong>
-			</li>
-			<li data-title="万张保单投诉量">
-				<span>万张保单投诉量</span>
-				<strong>
-					<span>2.331</span><i>件</i>
-				</strong>
-			</li>
+		<div class="content-box">
 			
-			<li data-title="保单15日送达率">
-				<span>保单15日送达率</span>
-				<strong>
-					<span>96.23</span><i>%</i>
-				</strong>
-			</li>
-			<li data-title="保全时效">
-				<span>保全时效</span>
-				<strong>
-					<span>1.01</span><i>天</i>
-				</strong>
-			</li>
-			<li data-title="理赔获赔率">
-				<span>理赔获赔率</span>
-				<strong>
-					<span>97.38</span><i>%</i>
-				</strong>
-			</li>
-			<li data-title="投诉案件处理及时率">
-				<span>投诉案件处理及时率</span>
-				<strong>
-					<span>100</span><i>%</i>
-				</strong>
-			</li>
-			<li data-title="电话呼入人工接通率">
-				<span>电话呼入人工接通率</span>
-				<strong>
-					<span>77.62</span><i>%</i>
-				</strong>
-			</li>
-		</ul>
+			<!-- <div class="swiper-container">
+			    <div class="swiper-wrapper"> -->
+			        <!-- <div class="swiper-slide">
+
+			        	<div class="content-title">
+							<div class="content-item"><span>指标</span></div>
+							<div class="content-item"><span>本日</span></div>
+							<div class="content-item"><span>环比</span></div>
+						</div>
+			        	<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>
+
+			        </div>
+			        <div class="swiper-slide">
+
+			        	<div class="content-title">
+							<div class="content-item"><span>指标</span></div>
+							<div class="content-item"><span>本日</span></div>
+							<div class="content-item"><span>环比</span></div>
+						</div>
+			        	<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>
+
+			        </div>
+			        <div class="swiper-slide">
+
+			        	<div class="content-title">
+							<div class="content-item"><span>指标</span></div>
+							<div class="content-item"><span>本日</span></div>
+							<div class="content-item"><span>环比</span></div>
+						</div>
+			        	<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>
+
+			        </div> -->
+			    <!-- </div>
+			</div>
+			<div class="my-pagination"></div> -->
+			
+
+			
+		</div>
 	</section>
 	<footer>
 		<label class="qs2">
@@ -123,66 +102,168 @@
 			<span>电网销</span>
 		</label>
 	</footer>
-	<script src="js/jquery.min.js"></script>
-	<script>
-		$(function(){
-			$('nav').html(chooseDay());
+	
 
-			//先填充nav 在计算高度
+
+	<!--遮罩层-->
+    <div class="branch-mask"></div>
+
+	<div class="branch-box">
+		<div class="branch-btn"><button id="branchClose" class="close"></button></div>
+		<div class="branch-con" id="branchCon"></div>
+	</div>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src='js/swiper-3.4.0.jquery.min.js'></script>
+	<script>
+		//机构 模拟数据
+		var dataBranch = [
+			['0000000001','全司'],['0000000000','安徽'],['0000000000','北京'],['0000000000','常州'],
+			['0000000000','大连'],['0000000000','福建'],['0000000000','甘肃'],['0000000000','广东'],
+			['0000000000','广西'],['0000000000','贵州'],['0000000000','海南'],['0000000000','河北'],
+			['0000000000','黑龙江'],['0000000000','湖北'],['0000000000','湖南'],['0000000000','吉林省'],
+			['0000000000','江苏'],['0000000000','江西'],['0000000000','辽宁'],['0000000000','内蒙古'],
+			['0000000000','宁波'],['0000000000','宁夏'],['0000000000','青岛'],['0000000000','青海'],
+			['0000000000','厦门'],['0000000000','山东'],['0000000000','山西'],['0000000000','陕西'],
+			['0000000000','上海'],['0000000000','深圳'],['0000000000','四川'],['0000000000','苏州'],
+			['0000000000','天津'],['0000000000','无锡'],['0000000000','新疆'],['0000000000','豫北'],
+			['0000000000','豫东'],['0000000000','豫南'],['0000000000','豫西'],['0000000000','云南'],
+			['0000000000','浙江'],['0000000000','重庆'],['0000000000','河南法渠']
+		];
+
+
+		//日、渠道为全司 的指标 
+		var dataSet1 = [
+			['H001','出险支付时效','73.20%','-2%'],
+			['H002','申请支付时效','2.96','1'],
+			['H003','犹豫期内电话回访成功率','96.21%','2%'],
+			['H004','当日越级件','2','-1'],
+			['H005','当日投诉件','3','-1'],
+			['H006','保单15日送达率','96.23%','1.5%'],
+			['H007','保全时效','1.01','0.02'],
+			['H008','理赔获赔率','97.38%','2.5%'],
+			['H009','投诉件办理及时率','100%','0'],
+			['H0010','电话呼入人工接通率','77.62%','-10%'],
+		];
+
+		//月、年、渠道为全司的指标
+		var dataSet2 = [
+			['H001','出险支付时效','73.20%','-2%'],
+			['H002','申请支付时效','2.96','1'],
+			['H003','犹豫期内电话回访成功率','96.21%','2%'],
+			['H004','亿元保费投诉量','0.1324','0.002'],
+			['H005','万张保单投诉量','2.331','1.22'],
+			['H006','保单15日送达率','96.23%','1.5%'],
+			['H007','保全时效','1.01','0.02'],
+			['H008','理赔获赔率','97.38%','2.5%'],
+			['H009','投诉件办理及时率','100%','0'],
+			['H0010','电话呼入人工接通率','77.62%','-10%'],
+		];
+
+		//日、渠道为 个险、渠道+健养、电网销 的指标 
+		var dataSet3 = [
+			['H001','出险支付时效','73.20%','-2%'],
+			['H002','申请支付时效','2.96','1'],
+			['H003','犹豫期内电话回访成功率','96.21%','2%'],
+			['H004','当日越级件','2','-1'],
+			['H005','当日投诉件','3','-1']
+		];
+
+		//月、年、渠道为 个险、渠道+健养、电网销 的指标 
+		var dataSet4 = [
+			['H001','出险支付时效','73.20%','-2%'],
+			['H002','申请支付时效','2.96','1'],
+			['H003','犹豫期内电话回访成功率','96.21%','2%'],
+			['H004','亿元保费投诉量','0.1324','0.002'],
+			['H005','万张保单投诉量','2.331','1.22'],
+		];
+
+
+
+
+		var branchNo = '0000000001',//获取机构号
+			branchName = '全司',//获取机构号
+			conHeight = 0,//页面布局所用
+			zbList = null,//用于存储指标
+			level = 1;//当前操作员机构等级 1--总公司,2--分公司,3--中支公司
+
+		$(function(){
+
+			//先填充nav
+			$('nav').html(chooseDay());
+			
+			//在计算.content高度
 			var h = $(document).height();
 			var hh = $('header')[0].clientHeight;
 			var nh = $('nav')[0].clientHeight;
 			var th = $('.type-choose')[0].clientHeight;
 			var fh = $('footer')[0].clientHeight;
-			$('.content').css('height',( h - hh- nh- th -fh - 20)+'px');
+		
+			conHeight = h - hh- nh- th -fh -10;
+			$('.content').css('height',conHeight+'px');
 
+			//在填充swiper
+			swiperContent(5,false);
+			
 			//解决从详情页 返回时 第一个值不会被选中的 bug
 			$('input[name="typeRadio"]')[0].checked = true;
 			$('input[name="qdRadio"]')[0].checked = true;
 
 			
-			var level = 1;//当前操作员机构等级 1--总公司,2--分公司,3--中支公司,4--四级机构
-			
-			queryData();
-			
 			//给指标绑定点击事件
-			$('.content').delegate('li','click',function(){
+			$('.content').delegate('a','click',function(){
 
 				var type = $('input[name="typeRadio"]:checked').val(),//本日、本月、本年选择
-					dateType = $('input[name="dateRadio"]:checked').val();//时间选择
-					
-				if( type == '1'){
-					dateType = dateType.replace(/^[0]/,'') + '月';
-				}else if(type == '2'){
+					dateType = $('input[name="dateRadio"]:checked').val(),//时间选择
+					year = new Date().getFullYear();
+
+				if(type == '0'){
+					dateType = year+'/'+dateType.replace(/-/g,'/');
+				}else if( type == '1'){
+					dateType = year+'/'+dateType+'月';
+				}else{
 					dateType+='年';
 				}
-				sessionStorage['day'] = dateType;
-				sessionStorage['title'] = $(this).attr('data-title');
-				//根据不同的机构等级 来存不同的qdType 
+
+				
+				sessionStorage['nyrType'] = type;//年月日类型
+				
+				sessionStorage['chooseTime'] = dateType;//选中的时间
+				//根据不同的机构等级 来存不同的qdType --下级机构可能再选择其他的渠道，所以分开存储
 				sessionStorage['qdType'+level] = $('input[name="qdRadio"]:checked').val();
+				sessionStorage['zbCode'+level] = $(this).attr('data-code');//选中的指标代码
+				sessionStorage['branchName'+level] = branchName;//机构名
+				sessionStorage['branchNo'+level] = branchNo;//机构号
+
+				sessionStorage['zbList'+level] = JSON.stringify(zbList);//指标数据
+
 				window.location.href = getUrl(level);
 			});
 
 			//时间选择
-			$('nav').delegate('input[name="dateRadio"]','change',function(){
+			// $('nav').delegate('input[name="dateRadio"]','change',function(){
 
-				console.log($(this).val());
+			// 	console.log($(this).val());
 
-				var label = $(this).parent();
-				$('nav').find('label').each(function(index,item){
-					if(item == label[0]){
-						$(item).addClass('weekAndDate');
-					}else{
-						$(item).removeClass('weekAndDate');
-					}
-				});
-			});
+			// 	var label = $(this).parent();
+			// 	$('nav').find('label').each(function(index,item){
+			// 		if(item == label[0]){
+			// 			$(item).addClass('weekAndDate');
+			// 		}else{
+			// 			$(item).removeClass('weekAndDate');
+			// 		}
+			// 	});
+			// });
 
 			//本日、本月、本年选择
 			$('.type-choose').delegate('input[name="typeRadio"]','change',function(){
 
-				var val = $(this).val();
-				var label = $(this).parent();
+				var val = $(this).val(),
+					label = $(this).parent(),
+					maxSWPNum = 5,//最大滑块数量
+					isyear = false;
+
 				$('.type-choose').find('label').each(function(index,item){
 					if(item == label[0]){
 						$(item).addClass('chooseed');
@@ -196,15 +277,22 @@
 				}else if(val == '1'){
 					$('nav').html(chooseMonth());
 				}else{
-					$('nav').html(chooseYear());
+					var obj = chooseYear();
+					
+					maxSWPNum = obj.maxSWPNum;
+					isyear = true;
+
+					$('nav').html(obj.html);
 				}
+
+				swiperContent(maxSWPNum,isyear);
+				queryData(maxSWPNum-1);
 				
 			});
 
 			//渠道选择
 			$('footer').delegate('input[name="qdRadio"]','change',function(){
 
-				console.log($(this).val());
 				var label = $(this).parent();
 
 				$('footer').find('label').each(function(index,item){
@@ -218,21 +306,124 @@
 					}
 				});
 
+				//获取到 最新滑动窗口的下标
+				var inpIndex = $('input[name="dateRadio"]:checked').attr('inp-index');
+				queryData( Number( inpIndex ) );
+
 			});
+
+			//给机构名赋值
+			$('#branchNo span').text(branchName);
+
+			//机构选择 总公司有权限操作
+			if(branchNo == '0000000001'){//这里放全司的机构号-----------------------------------曾浩荣
+				$('#branchCon').html(dataDealForBranch(dataBranch));
+				$('input[name="brhRadio"]')[0].checked=true;//给全司的input赋值
+				$('input[name="brhRadio"]:checked').parent().addClass('nowBfh');
+
+				$('#branchNo').on('click',function(){
+					showBranchBox();
+				});
+				$('#branchClose').on('click',function(){
+					hideBranchBox();
+				});
+
+				//机构切换
+				$('#branchCon').delegate('input[name="brhRadio"]','change',function(){
+					var label = $(this).parent(),
+						name = $(this).attr('data-selName'),
+						val = $(this).val();
+
+					$('#branchCon').find('label').each(function(index,item){
+						if(item == label[0]){
+							$(item).addClass('nowBfh');
+						}else{
+							$(item).removeClass('nowBfh');
+						}
+					});
+
+					branchNo = val;
+					branchName = name;
+					level = 2;
+
+					$('#branchNo span').text(name);
+					hideBranchBox();
+				});
+			}
+
+			queryData(4);//查询数据
 
 		});
 
+		//显示机构选择 组件
+		function showBranchBox(){
+			$(".branch-mask").fadeIn();
+			$(".branch-box").animate({"bottom": 0},200);
+		}
+
+		//隐藏机构选择 组件
+		function hideBranchBox(){
+			$(".branch-mask").fadeOut();
+			$(".branch-box").animate({"bottom": "-100%"},200);
+		}
+
+		/**
+		 * 机构的数据处理
+		 * list数据源
+		 */
+		function dataDealForBranch(list){
+
+			var arr = new Array();
+			var html = '';
+
+			for(var i=0;i<list.length;i+=4){
+				var a = [];
+				for(var j=i;j<i+4;j++){
+					if(!list[j]) break;
+					a.push(list[j]);
+				}
+				arr.push(a);
+			}
+			
+			for(var k=0;k<arr.length;k++){
+				var item = arr[k];
+				html+='<ul>';
+				for(var t=0;t<item.length;t++){
+					html+='<li><label><input type="radio" name="brhRadio" value="'+item[t][0]+'" data-selName="'+item[t][1]+'"/>'+item[t][1]+'</label></li>';					
+				}
+				html+='</ul>';
+			}
+
+			return html;
+		}
+
 		/**
 		 * 查询数据
+		 * activeIndex 最新滑动窗口的下标
 		 */
-		function queryData(){
+		function queryData(activeIndex){
 
 
 			var dateRadio = $('input[name="dateRadio"]:checked').val(), //时间选择 的默认值
-				qdRadio = $('input[name="qdRadio"]:checked').val();//渠道选择 的默认值
+				qdRadio = $('input[name="qdRadio"]:checked').val(),//渠道选择 的默认值
+				typeRadio = $('input[name="typeRadio"]:checked').val();//年/月/日
+
+
+			//要将查询到的数据 赋值给zbList  这个数据会在下级页面使用到
+			if(qdRadio == 0 && typeRadio == 0 ){
+				zbList = dataSet1;
+			}else if(qdRadio == 0 && ( typeRadio == 1 ||  typeRadio == 2) ){
+				zbList = dataSet2;
+			}else if(qdRadio != 0 && typeRadio == 0){
+				zbList = dataSet3;
+			}else{
+				zbList = dataSet4;
+			}
 
 			//....ajax
-			var list = ['73.20','2.96','0.1324','2.331','96.21','96.23','97.38','1.01','100'];
+			$('.swiper-con').eq(activeIndex).html( dataDeal(zbList) );
+			
+			
 		}
 
 		/**
@@ -276,13 +467,13 @@
 					week = d.getDay();
 				if(i != 4){
 					arr[i] ='<label>'+
-						'<input type="radio" name="dateRadio" value="'+ ft(month) +'-'+ ft(day)+'" >'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month) +'-'+ ft(day)+'" inp-index="'+i+'" >'+
 						'<span>'+ ft(month) +'-'+ ft(day)+'</span>'+
 						'<span class="week">'+weekList[week]+'</span>'+
 					'</label>';
 				}else{
 					arr[i] ='<label class="weekAndDate">'+
-						'<input type="radio" name="dateRadio" value="'+ ft(month) +'-'+ ft(day)+'" checked="checked">'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month) +'-'+ ft(day)+'" checked="checked" inp-index="'+i+'">'+
 						'<span>'+ ft(month) +'-'+ ft(day)+'</span>'+
 						'<span class="week">'+weekList[week]+'</span>'+
 					'</label>';
@@ -310,13 +501,13 @@
 
 				if(i != 4){
 					arr[i] ='<label>'+
-						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" >'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" inp-index="'+i+'">'+
 						'<span>'+ (month+1) +'</span>'+
 						'<span class="week">月</span>'+
 					'</label>';
 				}else{
 					arr[i] ='<label class="weekAndDate">'+
-						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" checked="checked">'+
+						'<input type="radio" name="dateRadio" value="'+ ft(month+1) +'" inp-index="'+i+'" checked="checked">'+
 						'<span>'+ (month+1) +'</span>'+
 						'<span class="week">月</span>'+
 					'</label>';
@@ -347,13 +538,13 @@
 				var year = d.getFullYear();
 				if(i != len){
 					arr[i] ='<label>'+
-						'<input type="radio" name="dateRadio" value="'+ year +'" >'+
+						'<input type="radio" name="dateRadio" value="'+ year +'" inp-index="'+i+'">'+
 						'<span>'+ year +'</span>'+
 						'<span class="week">年</span>'+
 					'</label>';
 				}else{
 					arr[i] ='<label class="weekAndDate">'+
-						'<input type="radio" name="dateRadio" value="'+ year +'" checked="checked">'+
+						'<input type="radio" name="dateRadio" value="'+ year +'" inp-index="'+i+'" checked="checked">'+
 						'<span>'+ year +'</span>'+
 						'<span class="week">年</span>'+
 					'</label>';
@@ -362,13 +553,113 @@
 
 				d.setYear(d.getFullYear() - 1);
 			}
-			return arr.join('');
+			return {
+				'html' : arr.join(''),
+				'maxSWPNum' : len+1
+			}
 		}
 
 		function ft(val){
 			return val > 9 ? val : '0' + val; 
 		}
 
+		/**
+		 * 初始化滑块 组件  填充内容
+		 * maxSWPNum 最大滑块数量
+		 * isyear是否为年
+		 */
+		function swiperContent(maxSWPNum,isyear){
+			
+	   		var html = '<div class="swiper-container"><div class="swiper-wrapper">';
+	   		var	arr = [
+	   				
+   				'<div class="swiper-slide">',
+		        	'<div class="content-title">',
+						'<div class="content-item"><span>指标</span></div>',
+						'<div class="content-item"><span>本日</span></div>',
+						'<div class="content-item"><span>'+(!isyear ? '环比':'同比')+'</span></div>',
+					'</div>',
+		        	'<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>',
+		        '</div>'	
+	   		];
+
+	   		for(var i = 0;i < maxSWPNum;i++){
+	   			html+=arr.join('');
+	   		}
+	   		html+='</div></div><div class="my-pagination"></div>';
+
+	   		$('.content-box').html(html);
+
+	   		//计算容器高度
+	   		var ch = $('.content-title')[0].clientHeight;
+			$('.swiper-con').css('height',( conHeight - ch - 20)+'px');
+
+	   		initSpw(maxSWPNum-1);
+		}
+
+		/**
+		 * 实例化swiper组件
+		 */
+		function initSpw(index){
+			var swiper = new Swiper('.swiper-container', {
+		    	initialSlide:index,//设置初始值
+		        pagination: '.my-pagination',
+		        onSlidePrevEnd:function(sw){
+		        	navLableChoose(sw.activeIndex);
+		        	queryData(sw.activeIndex);
+		       	},
+		       	onSlideNextEnd:function(sw){
+		       		navLableChoose(sw.activeIndex);
+		       		queryData(sw.activeIndex);
+		       	}
+
+		    });
+		}
+
+		/**
+		 * 时间跟谁滚动
+		 * activeIndex 最新滑动窗口的下标
+		 */
+		function navLableChoose(activeIndex){
+			$('nav').find('label').each(function(index,item){
+				var input = $(item).find('input');
+				if(activeIndex == index){
+					$(item).addClass('weekAndDate');
+					input[0].checked=true;
+				}else{
+					$(item).removeClass('weekAndDate');
+					input[0].checked=false;
+				}
+			});
+		}
+
+		/**
+		 * 数据处理
+		 * 数据源
+		 */
+		function dataDeal(list){
+			
+			var html = '';
+			for(var i=0;i<list.length;i++){
+				var item = list[i];
+				html+='<li>';
+				for(var j = 1; j<item.length;j++){
+					if(j!=1){
+						if(j!=item.length-1){
+							html+='<div class="content-item"><span>'+item[j]+'</span></div>';
+						}else{
+							html+='<div class="content-item"><span style="color:'+ (item[j].indexOf('-') >-1 ? '#007aff;' : '#e88d00') +'">'+item[j]+'</span></div>';
+						}
+						
+					}else{
+						html+='<div class="content-item"><a href="javascript:;" data-code="'+item[0]+'"><span>'+item[j]+'</span></a></div>';
+					}
+					
+				}
+				html+='</li>';
+			}
+			return html;
+		}
 	</script>
 </body>
 </html>
