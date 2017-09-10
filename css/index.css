@@ -92,7 +92,8 @@ nav label span.week{
 	font-weight: bold;
 }
 .content-box ul{
-	overflow-y:auto; 
+	overflow-y:auto;
+	background-color: #fff; 
 }
 .content-box ul li {
 	color: #333;
@@ -147,8 +148,9 @@ nav label span.week{
 }
 .branch-box{ 
 	position: fixed;
+	display: none; 
 	left: 0;
-	bottom: -100%;
+	top: 0;
 	width: 100%;
 	height: 100%;
 	overflow: auto; 

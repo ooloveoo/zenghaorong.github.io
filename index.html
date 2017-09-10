@@ -105,9 +105,7 @@
 	
 
 
-	<!--遮罩层-->
-    <div class="branch-mask"></div>
-
+	<!-- 机构选择 -->
 	<div class="branch-box">
 		<div class="branch-btn"><button id="branchClose" class="close"></button></div>
 		<div class="branch-con" id="branchCon"></div>
@@ -322,10 +320,10 @@
 				$('input[name="brhRadio"]:checked').parent().addClass('nowBfh');
 
 				$('#branchNo').on('click',function(){
-					showBranchBox();
+					$(".branch-box").fadeIn();
 				});
 				$('#branchClose').on('click',function(){
-					hideBranchBox();
+					$(".branch-box").fadeOut();
 				});
 
 				//机构切换
@@ -347,25 +345,14 @@
 					level = 2;
 
 					$('#branchNo span').text(name);
-					hideBranchBox();
+					$(".branch-box").fadeOut();
 				});
 			}
 
 			queryData(4);//查询数据
 
 		});
-
-		//显示机构选择 组件
-		function showBranchBox(){
-			$(".branch-mask").fadeIn();
-			$(".branch-box").animate({"bottom": 0},200);
-		}
-
-		//隐藏机构选择 组件
-		function hideBranchBox(){
-			$(".branch-mask").fadeOut();
-			$(".branch-box").animate({"bottom": "-100%"},200);
-		}
+		
 
 		/**
 		 * 机构的数据处理

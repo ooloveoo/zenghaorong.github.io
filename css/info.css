@@ -54,7 +54,8 @@
 	font-weight: bold;
 }
 .content-box ul{
-	overflow-y:auto; 
+	overflow-y:auto;
+	background-color: #fff; 
 }
 .content-box ul li {
 	color: #333;
