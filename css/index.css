@@ -93,6 +93,7 @@ nav label span.week{
 }
 .content-box ul{
 	overflow-y:auto;
+	-webkit-overflow-scrolling:touch;
 	background-color: #fff; 
 }
 .content-box ul li {

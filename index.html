@@ -40,44 +40,6 @@
 	<section class="content">
 		<div class="content-box">
 			
-			<!-- <div class="swiper-container">
-			    <div class="swiper-wrapper"> -->
-			        <!-- <div class="swiper-slide">
-
-			        	<div class="content-title">
-							<div class="content-item"><span>指标</span></div>
-							<div class="content-item"><span>本日</span></div>
-							<div class="content-item"><span>环比</span></div>
-						</div>
-			        	<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>
-
-			        </div>
-			        <div class="swiper-slide">
-
-			        	<div class="content-title">
-							<div class="content-item"><span>指标</span></div>
-							<div class="content-item"><span>本日</span></div>
-							<div class="content-item"><span>环比</span></div>
-						</div>
-			        	<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>
-
-			        </div>
-			        <div class="swiper-slide">
-
-			        	<div class="content-title">
-							<div class="content-item"><span>指标</span></div>
-							<div class="content-item"><span>本日</span></div>
-							<div class="content-item"><span>环比</span></div>
-						</div>
-			        	<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>
-
-			        </div> -->
-			    <!-- </div>
-			</div>
-			<div class="my-pagination"></div> -->
-			
-
-			
 		</div>
 	</section>
 	<footer>
@@ -184,7 +146,8 @@
 			branchName = '全司',//获取机构号
 			conHeight = 0,//页面布局所用
 			zbList = null,//用于存储指标
-			level = 1;//当前操作员机构等级 1--总公司,2--分公司,3--中支公司
+			level = 1,//当前操作员机构等级 1--总公司,2--分公司,3--中支公司
+			swiper = null;//滑动组件对象
 
 		$(function(){
 
@@ -202,7 +165,7 @@
 			$('.content').css('height',conHeight+'px');
 
 			//在填充swiper
-			swiperContent(5,false);
+			swiperContent(5,false,0);
 			
 			//解决从详情页 返回时 第一个值不会被选中的 bug
 			$('input[name="typeRadio"]')[0].checked = true;
@@ -240,19 +203,12 @@
 			});
 
 			//时间选择
-			// $('nav').delegate('input[name="dateRadio"]','change',function(){
+			$('nav').delegate('input[name="dateRadio"]','change',function(){
 
-			// 	console.log($(this).val());
-
-			// 	var label = $(this).parent();
-			// 	$('nav').find('label').each(function(index,item){
-			// 		if(item == label[0]){
-			// 			$(item).addClass('weekAndDate');
-			// 		}else{
-			// 			$(item).removeClass('weekAndDate');
-			// 		}
-			// 	});
-			// });
+				var val = Number( $(this).attr('inp-index') );
+				swiper._slideTo(val);
+				
+			});
 
 			//本日、本月、本年选择
 			$('.type-choose').delegate('input[name="typeRadio"]','change',function(){
@@ -283,7 +239,7 @@
 					$('nav').html(obj.html);
 				}
 
-				swiperContent(maxSWPNum,isyear);
+				swiperContent(maxSWPNum,isyear,val);
 				queryData(maxSWPNum-1);
 				
 			});
@@ -429,7 +385,7 @@
 			}
 			return url;
 		}
-
+		
 		/**
 		 * 选择天
 		 */
@@ -554,8 +510,9 @@
 		 * 初始化滑块 组件  填充内容
 		 * maxSWPNum 最大滑块数量
 		 * isyear是否为年
+		 * type 年/月/日类型 0-日 1-月 2-年 
 		 */
-		function swiperContent(maxSWPNum,isyear){
+		function swiperContent(maxSWPNum,isyear,type){
 			
 	   		var html = '<div class="swiper-container"><div class="swiper-wrapper">';
 	   		var	arr = [
@@ -563,7 +520,7 @@
    				'<div class="swiper-slide">',
 		        	'<div class="content-title">',
 						'<div class="content-item"><span>指标</span></div>',
-						'<div class="content-item"><span>本日</span></div>',
+						'<div class="content-item"><span>'+getNYR(type)+'</span></div>',
 						'<div class="content-item"><span>'+(!isyear ? '环比':'同比')+'</span></div>',
 					'</div>',
 		        	'<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>',
@@ -584,11 +541,24 @@
 	   		initSpw(maxSWPNum-1);
 		}
 
+		//获取年/月/日
+		function getNYR(type){
+			var t = '';
+			if(type == '0'){
+				t = '本日';
+			}else if(type == '1'){
+				t = '本月';
+			}else{
+				t = '本年';
+			}
+			return t;
+		}
+
 		/**
 		 * 实例化swiper组件
 		 */
 		function initSpw(index){
-			var swiper = new Swiper('.swiper-container', {
+			swiper = new Swiper('.swiper-container', {
 		    	initialSlide:index,//设置初始值
 		        pagination: '.my-pagination',
 		        onSlidePrevEnd:function(sw){
