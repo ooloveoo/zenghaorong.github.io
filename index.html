@@ -561,11 +561,11 @@
 			swiper = new Swiper('.swiper-container', {
 		    	initialSlide:index,//设置初始值
 		        pagination: '.my-pagination',
-		        onSlidePrevEnd:function(sw){
+		       	onSlidePrevStart:function(sw){
 		        	navLableChoose(sw.activeIndex);
 		        	queryData(sw.activeIndex);
 		       	},
-		       	onSlideNextEnd:function(sw){
+		       	onSlideNextStart:function(sw){
 		       		navLableChoose(sw.activeIndex);
 		       		queryData(sw.activeIndex);
 		       	}

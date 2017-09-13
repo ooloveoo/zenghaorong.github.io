@@ -326,7 +326,7 @@
 	   		for(var i = 0;i < maxSWPNum;i++){
 	   			html+='<div class="swiper-slide" swiper-item="'+i+'">'+
 		        	'<div class="content-title" >'+
-						'<div class="content-item"><span>指标</span></div>'+
+						'<div class="content-item"><span>机构</span></div>'+
 						'<div class="content-item"><span>排名</span></div>'+
 						'<div class="content-item"><span class="desc0" order-index="3" order-by="no">'+getNYR(type)+'</span></div>'+
 						'<div class="content-item"><span class="desc0" order-index="4" order-by="no">'+(!isyear ? '环比':'同比')+'</span></div>'+
@@ -353,12 +353,12 @@
 			var swiper = new Swiper('.swiper-container', {
 		    	initialSlide:position,//设置初始值
 		        pagination: '.my-pagination',
-		        onSlidePrevEnd:function(sw){
+		        onSlidePrevStart:function(sw){
 		        	var obj = zbName(sw.activeIndex);
 		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
 		        	queryData(sw.activeIndex);
 		       	},
-		       	onSlideNextEnd:function(sw){
+		       	onSlideNextStart:function(sw){
 		       		var obj = zbName(sw.activeIndex);
 		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
 		       		queryData(sw.activeIndex);
