@@ -49,6 +49,8 @@
 }
 
 .content-title span{
+	display: inline-block;
+	height: 100%;
 	color: #fff;
 	font-size: 1.4em;
 	font-weight: bold;
