@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>指标详情</title>
+	<link rel="stylesheet" href="css/com.css">
+	<link rel="stylesheet" href="css/info.css">
+	<link rel="stylesheet" href="css/swiper-3.4.0.min.css">
+</head>
+<body>
+	<header>
+		<div class="hLeft"><button class="back"></button></div>
+		<div class="hCenter"><span>服务评价</span></div>
+		<div class="hRight jg">
+			<div class="jg-con"><span id="brhName"></span></div>
+		</div>
+	</header>
+	<section class="zbType">
+		<div class="zbType-item"><span id="zbType" data-code=""></span></div>
+		<div class="zbType-item"><span id="dayTime"></span></div>
+	</section>
+	
+	<div class="clear"></div>
+	<!-- 机构、排名、本日/本月/本年  同比 -->
+	<section class="content">
+		<div class="content-box">
+			
+		</div>
+		
+	</section>
+
+	<footer>
+		<label class="qs">
+			<input type="radio" name="qdRadio" value="0" >
+			<i></i>
+			<span>全司</span>
+		</label>
+		<label class="gx">
+			<input type="radio" name="qdRadio" value="1">
+			<i></i>
+			<span>个险</span>
+		</label>
+		<label class="fq">
+			<input type="radio" name="qdRadio" value="2">
+			<i></i>
+			<span>健养+渠道</span>
+		</label>
+		<label class="dx">
+			<input type="radio" name="qdRadio" value="3">
+			<i></i>
+			<span>电网销</span>
+		</label>
+	</footer>
+
+	<script src="js/jquery.min.js"></script>
+	<script src='js/swiper-3.4.0.jquery.min.js'></script>
+	<script>
+
+		var dataSet0 = [
+			['0000000000000','全司','-','100','130'],
+			['0000000000001','安徽分公司','10','20','30'],
+			['0000000000002','安庆中心支公司','2','80','9'],
+			['0000000000001','安庆中心支公司潜山营销服务部','1','90','10']
+		];
+
+		//日、渠道为全司 的指标 
+		var dataSet1 = [
+			['H001','出险支付时效'],
+			['H002','申请支付时效'],
+			['H003','犹豫期内电话回访成功率'],
+			['H004','当日越级件'],
+			['H005','当日投诉件'],
+			['H006','保单15日送达率'],
+			['H007','保全时效'],
+			['H008','理赔获赔率'],
+			['H009','投诉件办理及时率'],
+			['H0010','电话呼入人工接通率'],
+		];
+
+		//月、年、渠道为全司的指标
+		var dataSet2 = [
+			['H001','出险支付时效'],
+			['H002','申请支付时效'],
+			['H003','犹豫期内电话回访成功率'],
+			['H004','亿元保费投诉量'],
+			['H005','万张保单投诉量'],
+			['H006','保单15日送达率'],
+			['H007','保全时效'],
+			['H008','理赔获赔率'],
+			['H009','投诉件办理及时率'],
+			['H0010','电话呼入人工接通率'],
+		];
+
+		//日、渠道为 个险、渠道+健养、电网销 的指标 
+		var dataSet3 = [
+			['H001','出险支付时效'],
+			['H002','申请支付时效'],
+			['H003','犹豫期内电话回访成功率'],
+			['H004','当日越级件'],
+			['H005','当日投诉件']
+		];
+
+		//月、年、渠道为 个险、渠道+健养、电网销 的指标 
+		var dataSet4 = [
+			['H001','出险支付时效'],
+			['H002','申请支付时效'],
+			['H003','犹豫期内电话回访成功率'],
+			['H004','亿元保费投诉量'],
+			['H005','万张保单投诉量'],
+		];
+
+
+		var chooseTime = sessionStorage.chooseTime,//取pIndex.html缓存的 时间
+			nyrType = sessionStorage.nyrType,//取pIndex.html缓存的 年/月/日类型
+			qdType4 = sessionStorage.qdType4,//缓存的 渠道
+			zbCode4 = sessionStorage.zbCode4,//缓存的 被选中的指标
+			branchNo4 = sessionStorage.branchNo4,//缓存的 分公司机构号
+			branchName4 = decodeURI( sessionStorage.branchName4 ), //机构名
+
+			zbList = JSON.parse( sessionStorage.zbList4 ),//缓存的 指标数据
+			conHeight = 0;//用于页面布局
+
+		$(function(){
+
+			//在计算.content高度
+			var h = $(document).height();
+			var hh = $('header')[0].clientHeight;
+			var zh = $('.zbType')[0].clientHeight;
+			var fh = $('footer')[0].clientHeight;
+		
+			conHeight = h - hh- zh-fh-10 ;
+			$('.content').css('height',conHeight+'px');
+
+
+			var pos = arrIndex(zbList,zbCode4);
+
+			if(pos > -1){
+
+				//初始化 滑块组件
+				swiperContent(pos,zbList.length,( nyrType == '2' ? true:false),nyrType);
+				$('#zbType').text( zbName( pos ).name );
+				$('#brhName').text(branchName4.replace(/分公司本级|分公司本部|中心支公司/g,''));
+				$('#dayTime').text( chooseTime );
+				queryData(pos);//查询数据
+			}
+			
+
+			//给 渠道赋值
+			$('input[name="qdRadio"]').each(function(index,item){
+				if(item.value == qdType4){
+					item.checked = true;
+					$(item).parent()[0].className = $(item).parent()[0].className+'2';
+				}
+			});
+
+			//返回 上一页
+			$('.back').on('click',function(){
+				history.back(0);
+			});
+			
+
+			//渠道选择 委托change事件
+			$('footer').delegate('input[name="qdRadio"]','change',function(){
+				var label = $(this).parent(),
+					val = $(this).val();
+
+				$('footer').find('label').each(function(index,item){
+					var className = item.className;
+					if(item == label[0]){
+						item.className = className+'2';
+					}else{
+						item.className = className.replace('2','');
+					}
+				});
+
+				queryZbType(val);
+
+				//查询到的指标有数据
+				if(zbList.length){
+
+					//初始化 滑块组件
+					swiperContent(0,zbList.length,( nyrType == '2' ? true:false),nyrType);
+					$('#zbType').text( zbName( 0 ).name );
+					queryData(0);//查询数据
+				}
+			});
+		});
+
+		/**
+		 * 查询数据
+		 * activeIndex 最新滑动窗口的下标
+		 */
+		function queryData(activeIndex){
+			//....ajax
+			$('.swiper-con').eq(activeIndex).html( dataDeal(dataSet0) );
+		}
+
+		/**
+		 * 查询指标类型
+		 * type 渠道类型
+		 */
+		function queryZbType(type){
+			//nyrType 年/月/日
+			if(type == 0 && nyrType == 0 ){
+				zbList = dataSet1;
+			}else if(type == 0 && ( nyrType == 1 ||  nyrType == 2 ) ){
+				zbList = dataSet2;
+			}else if(type != 0 && nyrType == 0){
+				zbList = dataSet3;
+			}else{
+				zbList = dataSet4;
+			}
+			//ajax  同步请求
+		}
+
+        /**
+		 * 数据处理
+		 * 数据源
+		 */
+		function dataDeal(list){
+			
+			var html = '';
+			for(var i=0;i<list.length;i++){
+				var item = list[i];
+
+				if(i == 0||i == 1||i==2){
+					html+='<li class="first">';
+					
+				}else{
+					html+='<li>';
+				}
+				
+				for(var j = 1; j<item.length;j++){
+					if(j!=1||i==0||i==1||i==2||i==3){
+						if(j != item.length-1){
+							if( (i==0 || i==1||i==2||i==3) && j == 2){
+								html+='<div class="content-item"><span>'+(item[j].indexOf('-') < 0 ? '（'+item[j]+'）':item[j])+'</span></div>';
+							}else{
+								html+='<div class="content-item"><span>'+item[j]+'</span></div>';
+							}
+							
+						}else{
+							html+='<div class="content-item"><span style="color:'+ (item[j] > 0 ? '#32CD32;' : '#FF0000;') +'">'+item[j]+'</span></div>';
+						}
+					}else{
+						html+='<div class="content-item"><span style="color:#007aff;">'+item[j]+'</span></div>';
+					}
+					
+				}
+				html+='</li>';
+			}
+			return html;
+		}
+
+        /**
+		 * 初始化滑块 组件  填充内容
+		 * maxSWPNum 最大滑块数量
+		 * isyear是否为年
+		 * type 年/月/日类型 0-日 1-月 2-年 
+		 */
+		function swiperContent(position,maxSWPNum,isyear,type){
+			
+	   		var html = '<div class="swiper-container"><div class="swiper-wrapper">';
+	   		
+	   		//swiper-item  这个属性对应每个指标
+	   		for(var i = 0;i < maxSWPNum;i++){
+	   			html+='<div class="swiper-slide" swiper-item="'+i+'">'+
+		        	'<div class="content-title" >'+
+						'<div class="content-item"><span>机构</span></div>'+
+						'<div class="content-item"><span >排名</span></div>'+
+						'<div class="content-item"><span>'+getNYR(type)+'</span></div>'+
+						'<div class="content-item"><span>'+(!isyear ? '环比':'同比')+'</span></div>'+
+					'</div>'+
+		        	'<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>'+
+		        '</div>';
+	   		}
+	   		html+='</div></div><div class="my-pagination"></div>';
+
+	   		$('.content-box').html(html);
+
+	   		//计算容器高度
+	   		var ch = $('.content-title')[0].clientHeight;
+			$('.swiper-con').css('height',( conHeight - ch - 20)+'px');
+
+	   		if(position > -1) initSpw(position);
+		}
+		
+		/**
+		 * 实例化swiper组件
+		 * position 初始位置下标
+		 */
+		function initSpw(position){
+			var swiper = new Swiper('.swiper-container', {
+		    	initialSlide:position,//设置初始值
+		        pagination: '.my-pagination',
+		        onSlidePrevStart:function(sw){
+		        	var obj = zbName(sw.activeIndex);
+		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
+		        	queryData(sw.activeIndex);
+		       	},
+		       	onSlideNextStart:function(sw){
+		       		var obj = zbName(sw.activeIndex);
+		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
+		       		queryData(sw.activeIndex);
+		       	}
+
+		    });
+		}
+
+		//获取指标所对应的名字 和 代码
+		function zbName(index){
+			return {
+				'code': zbList[index][0],
+				'name': zbList[index][1]
+			}
+		}
+
+		//获取年/月/日
+		function getNYR(type){
+			var t = '';
+			if(type == '0'){
+				t = '本日';
+			}else if(type == '1'){
+				t = '本月';
+			}else{
+				t = '本年';
+			}
+			return t;
+		}
+
+		//获取指定元素在数组中的下标
+		function arrIndex(arr,val){
+			var index = -1;
+			for(var i=0;i<arr.length;i++){
+				if(val == arr[i][0]){
+					index = i;
+				}
+			}
+			return index;
+		}
+
+		
+
+	</script>
+</body>
+</html>

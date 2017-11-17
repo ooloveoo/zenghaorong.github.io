@@ -61,11 +61,11 @@
 			['0000000000000','全司','-','100','130'],
 			['0000000000001','安徽分公司','10','20','30'],
 			['0000000000002','安庆中心支公司','2','80','9'],
-			['0000000000001','安庆中心支公司潜山营销服务部','1','90','10'],
-			['0000000000002','安庆中心支公司宿松营销服务部','2','80','9'],
-			['0000000000003','安庆中心支公司桐城营销服务部','3','70','8'],
+			['0000000000001','安庆中心支公司潜山营销服务部','1','-','10'],
+			['0000000000002','安庆中心支公司宿松营销服务部','2','-','9'],
+			['0000000000003','安庆中心支公司桐城营销服务部','3','70','-'],
 			['0000000000001','安庆中心支公司孝肃路营销服务部','4','60','7'],
-			['0000000000002','安庆中心支公司岳西营销服务部','2','50','6'],
+			['0000000000002','安庆中心支公司岳西营销服务部','2','50','-'],
 			['0000000000003','安庆中支本部','6','40','5'],
 			['0000000000001','怀宁支公司','7','30','4'],
 			['0000000000002','太湖支公司','8','20','3'],
@@ -74,59 +74,61 @@
 
 		//日、渠道为全司 的指标 
 		var dataSet1 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','当日越级件'],
-			['H005','当日投诉件'],
-			['H006','保单15日送达率'],
-			['H007','保全时效'],
-			['H008','理赔获赔率'],
-			['H009','投诉件办理及时率'],
-			['H0010','电话呼入人工接通率'],
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			// ['H003','犹豫期内电话回访成功率','负'],
+			['H003','犹豫期剩余3天内未完成回访的保单','正'],
+			['H003','回访不成功但仍在犹豫期内的保单','正'],
+			['H004','当日越级件','正'],
+			['H005','当日投诉件','正'],
+			['H006','保单15日送达率','负'],
+			['H007','保全时效','正'],
+			['H008','理赔获赔率','负'],
+			['H009','投诉件办理及时率','负'],
+			['H0010','电话呼入人工接通率','负'],
 		];
 
 		//月、年、渠道为全司的指标
 		var dataSet2 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','亿元保费投诉量'],
-			['H005','万张保单投诉量'],
-			['H006','保单15日送达率'],
-			['H007','保全时效'],
-			['H008','理赔获赔率'],
-			['H009','投诉件办理及时率'],
-			['H0010','电话呼入人工接通率'],
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			['H003','犹豫期内电话回访成功率','负'],
+			['H004','亿元保费投诉量','正'],
+			['H005','万张保单投诉量','正'],
+			['H006','保单15日送达率','负'],
+			['H007','保全时效','正'],
+			['H008','理赔获赔率','负'],
+			['H009','投诉件办理及时率','负'],
+			['H0010','电话呼入人工接通率','负'],
 		];
 
 		//日、渠道为 个险、渠道+健养、电网销 的指标 
 		var dataSet3 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','当日越级件'],
-			['H005','当日投诉件']
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			// ['H003','犹豫期内电话回访成功率','负'],
+			['H003','犹豫期剩余3天内未完成回访的保单','正'],
+			['H003','回访不成功但仍在犹豫期内的保单','正'],
+			['H004','当日越级件','正'],
+			['H005','当日投诉件','正']
 		];
 
 		//月、年、渠道为 个险、渠道+健养、电网销 的指标 
 		var dataSet4 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','亿元保费投诉量'],
-			['H005','万张保单投诉量'],
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			['H003','犹豫期内电话回访成功率','负'],
+			['H004','亿元保费投诉量','正'],
+			['H005','万张保单投诉量','正'],
 		];
 
 
 		var chooseTime = sessionStorage.chooseTime,//取pIndex.html缓存的 时间
 			nyrType = sessionStorage.nyrType,//取pIndex.html缓存的 年/月/日类型
-			qdType3 = sessionStorage.qdType3,//缓存的 渠道
-			zbCode3 = sessionStorage.zbCode3,//缓存的 被选中的指标
-			branchNo3 = sessionStorage.branchNo3,//缓存的 分公司机构号
-			branchName3 = decodeURI( sessionStorage.branchName3 ), //机构名
-
-			zbList = JSON.parse( sessionStorage.zbList3 ),//缓存的 指标数据
+			qdType3 = sessionStorage.qdType3,//取pIndex.html缓存的 渠道
+			zbCode3 = sessionStorage.zbCode3,//取pIndex.html缓存的 被选中的指标
+			branchName3 = sessionStorage.branchName3,
+			zbList = JSON.parse( sessionStorage.zbList3 ),//取pIndex.html缓存的 指标数据
 			conHeight = 0;//用于页面布局
 
 		$(function(){
@@ -147,10 +149,14 @@
 
 				//初始化 滑块组件
 				swiperContent(pos,zbList.length,( nyrType == '2' ? true:false),nyrType);
-				$('#zbType').text( zbName( pos ).name );
+				var zb = zbName( pos );
+				$('#zbType').text( zb.name ).attr('data-code',zbCode3);
 				$('#brhName').text(branchName3.replace(/分公司本级|分公司本部|中心支公司/g,''));
 				$('#dayTime').text( chooseTime );
-				queryData(pos);//查询数据
+				if(pos == 0){
+					queryData(pos,zb.order);//查询数据
+				}
+				
 			}
 			
 
@@ -189,27 +195,29 @@
 
 					//初始化 滑块组件
 					swiperContent(0,zbList.length,( nyrType == '2' ? true:false),nyrType);
-					$('#zbType').text( zbName( 0 ).name );
-					queryData(0);//查询数据
+					var zb = zbName( 0 );
+					$('#zbType').text( zb.name ).attr('data-code',zbList[0][0]);
+					queryData(0,zb.order);//查询数据
 				}
 			});
-
+			
 			// 排序的点击事件
 			$('.content-box').delegate('[order-by]','click',function(){
 				var item = $(this).parents('[swiper-item]'),
+					zb = zbName( Number(item.attr('swiper-item')) ),
 					index = Number( $(this).attr('order-index')),
 					order = $(this).attr('order-by'),
-					ord = true,//asc--true,desc--false
+					flg = true,//asc--true,desc--false
 					el = $(this)[0];
 
 				//desc--降序 从大到小  asc--升序从小到大	
 				if (order == 'no' || order == 'desc') {
                     order = 'asc';
-                    ord = true;
+                    flg = true;
                     $(this)[0].className = 'desc2';
                 } else if (order == 'asc') {
                     order = 'desc';
-                    ord = false;
+                    flg = false;
                    $(this)[0].className = 'desc1';
                 }
 
@@ -219,10 +227,11 @@
                         $(this).attr('order-by','no');
                     }
                 });
+                if(zb.order=='负') flg = !flg;
 
                 $(this).attr('order-by', order);
 
-                item.find('ul').html( dataDeal( orderOrDesc(dataSet0, index, ord,3) ) );
+                item.find('ul').html( dataDeal( orderOrDesc(dataSet0, index, flg,3,zb.order,order) ) );
 
 			});
 
@@ -234,9 +243,10 @@
 		 * 查询数据
 		 * activeIndex 最新滑动窗口的下标
 		 */
-		function queryData(activeIndex){
+		function queryData(activeIndex,order){
 			//....ajax
-			$('.swiper-con').eq(activeIndex).html( dataDeal(dataSet0) );
+			var list = orderOrDesc(dataSet0, 3, (order == '正' ? true : false ),3,order,'asc');
+			$('.swiper-con').eq(activeIndex).html( dataDeal(list) );
 		}
 
 		/**
@@ -296,11 +306,13 @@
 			return html;
 		}
 
+       
         /**
 		 * 初始化滑块 组件  填充内容
 		 * maxSWPNum 最大滑块数量
 		 * isyear是否为年
-		 * type 年/月/日类型 0-日 1-月 2-年 
+		 * type 年/月/日类型 0-日 1-月 2-年
+		 * position 指标对应的滑块 
 		 */
 		function swiperContent(position,maxSWPNum,isyear,type){
 			
@@ -311,8 +323,8 @@
 	   			html+='<div class="swiper-slide" swiper-item="'+i+'">'+
 		        	'<div class="content-title" >'+
 						'<div class="content-item"><span>机构</span></div>'+
-						'<div class="content-item"><span>排名</span></div>'+
-						'<div class="content-item"><span class="desc0" order-index="3" order-by="no">'+getNYR(type)+'</span></div>'+
+						'<div class="content-item"><span >排名</span></div>'+
+						'<div class="content-item"><span class="desc2" order-index="3" order-by="asc">'+getNYR(type)+'</span></div>'+
 						'<div class="content-item"><span class="desc0" order-index="4" order-by="no">'+(!isyear ? '环比':'同比')+'</span></div>'+
 					'</div>'+
 		        	'<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>'+
@@ -338,14 +350,14 @@
 		    	initialSlide:position,//设置初始值
 		        pagination: '.my-pagination',
 		        onSlidePrevStart:function(sw){
-		        	var obj = zbName(sw.activeIndex);
-		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
-		        	queryData(sw.activeIndex);
+		        	var zb = zbName(sw.activeIndex);
+		        	$('#zbType').text( zb.name ).attr('data-code',zb.code);
+		        	queryData(sw.activeIndex,zb.order);
 		       	},
 		       	onSlideNextStart:function(sw){
-		       		var obj = zbName(sw.activeIndex);
-		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
-		       		queryData(sw.activeIndex);
+		       		var zb = zbName(sw.activeIndex);
+		        	$('#zbType').text( zb.name ).attr('data-code',zb.code);
+		       		queryData(sw.activeIndex,zb.order);
 		       	}
 
 		    });
@@ -355,7 +367,8 @@
 		function zbName(index){
 			return {
 				'code': zbList[index][0],
-				'name': zbList[index][1]
+				'name': zbList[index][1],
+				'order':zbList[index][zbList[index].length-1]
 			}
 		}
 
@@ -384,49 +397,86 @@
 		}
 
 		//****************************** 排序实现 ********************************
-
+		
 		/**
 		 * 比较大小
 		 * a1,a2 要比较的两个值
-		 * orderOrDesc asc--true,desc--false 
+		 * flg flg ? b1 > b2 : b1 < b2;
 		 */
-		function bigOrSmall(a1,a2,orderOrDesc){
+		function bigOrSmall(a1,a2,flg){
 
             
             if (a1!=0 && ( !a1 || a1 == '-' || isNaN(a1) )) {
-                a1 = orderOrDesc ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
+                a1 = flg ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
             }
             if (a2!=0 && ( !a2 || a2 == '-' || isNaN(a2) )) {
-                a2 = orderOrDesc ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
+                a2 = flg ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
             }
             b1 = Number(a1);
             b2 = Number(a2);
 
-            return orderOrDesc ? b1 > b2 : b1 < b2;
+            return flg ? b1 > b2 : b1 < b2;
             
 		}
 
 		/**
          * arr 数据源
          * index 数组下标  使用数组中的这项来排序
-         * orderOrDesc asc--true,desc--false 
+         * flg flg ? b1 > b2 : b1 < b2;
          * noOrder 前几个不用排序  取下标
+         * order 正向指标 或 负向指标
+         * orderOrDesc 'asc'或 'desc' 
         */
-		function orderOrDesc(arr, index, orderOrDesc,noOrder) {
-			       
+		function orderOrDesc(arr, index, flg,noOrder,order,orderOrDesc) {
+     
             for (var unfix = arr.length - 1; unfix > noOrder; unfix--) {
 
                 for (var i = noOrder; i < unfix; i++) {
-                    if (this.bigOrSmall(arr[i][index], arr[i + 1][index],orderOrDesc)) {
+                    if (this.bigOrSmall(arr[i][index], arr[i + 1][index],flg)) {
                         var temp = arr[i];
                         arr.splice(i, 1, arr[i + 1]);
                         arr.splice(i + 1, 1, temp);
                     }
                 }
             }
+
+            if(orderOrDesc == 'asc'){
+            	var b = 1;
+            	for(var i=noOrder;i<arr.length;i++){
+            		
+            		if( arr[i-1] && arr[i][index]!=arr[i-1][index]){
+            			b = i-2;
+            		}
+            		if(arr[i][index]!='-'){
+            			arr[i][2] = b+'';
+            		}else{
+            			arr[i][2] = '-';
+            		}
+            		
+            	}
+            }else{
+            	var b = 1;
+            	var len = arr.length;
+            	var num = 0;//值为'-'的总数
+            	for(var i=1;i<len-noOrder;i++){
+            		if(arr[len+1-i] && arr[len+1-i][index]!=arr[len-i][index]){
+            			b = i-num;
+            		}
+            		if(arr[len-i][index]!='-'){
+            			arr[len-i][2] = b+'';
+            		}else{
+            			arr[len-i][2] = '-';
+            			num++;
+            		}
+            		
+            	}
+            }
+            
             return arr;
         }
 
 	</script>
+
+
 </body>
 </html>

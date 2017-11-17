@@ -7,6 +7,100 @@
 	<link rel="stylesheet" href="css/com.css">
 	<link rel="stylesheet" href="css/info.css">
 	<link rel="stylesheet" href="css/swiper-3.4.0.min.css">
+	<link rel="stylesheet" href="css/mobiscroll.min.css">
+	<style>
+		.fg{
+			margin:0 4px;
+		}
+		
+		.scal .zbType-item span{
+			font-size: 1.2em;
+		}
+		
+		.mdata-content{
+			display: none;
+		}
+		.mdate-choose{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: #fff;
+			z-index: 9999;
+			display: none;
+		}
+		.mdate-input{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			height: 4em;
+			line-height: 4em;
+			padding: 1.5em;
+		}
+		.mdate-input input{
+			font-size: 1.5em;
+			border:1px solid #999;
+			padding: 0 8px;
+			width: 40%;
+			height: 2em;
+			color: #333;
+			border-radius: 3px;
+		}
+		.mdate-input span{
+			display: inline-block;
+			text-align: center;
+			color: #333;
+		}
+		
+		.mdate-close{
+			padding: 1em 1.5em;
+			margin-bottom:16em;
+		}
+		.mdate-close button{
+			outline: none;
+			border: none;
+			background-color: transparent;
+			color: #2a57ae;
+			font-size: 1.4em;
+			height: 1.6em;
+			width: 1.6em;
+		}
+
+		.close{
+			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD0UlEQVR4Xu2Yz0sVURTHz7FXjgUKvoUbFy7cCYJeWhTRL8vKxKJ2Qf9CtBbaBEFb/4daFiH6MlMzkFrEvYLgzoULNy6eoFBONXnjxgy85s2bOTPv3jsDb2Y5P+4938/9nnPPHYQOv7DD9UMJoHRAhxMoU6DDDVAWwVQpMDg42DMwMDDLOX9WNOcwxs5KKd8g4gvO+QY1PjKAoaEhp7+/fxURLwLAIuf8HgD8oU5k8j1/YZYB4BIAHJ+cnExsbm5+pcxJAjA6OnquUqks++KDcQsBISQ+iI0MgQSAMTYHAE/CRKWU80II5YRcLt/2NUS8EhHbKyHE46TASAB8B3xCxPMRA+bihBYr/y88f2EeUFKUBEANSoBwHwC8JOI6nusSr2IhAyBA+Mg5nzINQaf41ADyhjA8PNzd19e34lf7/8yUxvaNH6ZyQPBhi10heGzECUp8b2+vKnjXIwrekhBimpLz4W8zAVCDhPqC8LhaISSJR8QZzvnvLPUlMwBbEEyKz1QDwpRNOsG0eC0ATDnBhnhtAHRDsCVeKwBdEGyK1w6gXQi2xRsBkBVCHuKNAUgLgTF2Wkq51KrJaWefT+oN2uoDkgZP2iJd1512HEeqNhYRb0d0eGvqftYmJyk+ow4IJk84s68g4i8AUIeopm6yXq/P7O7uuhQhWd8x6oAgqAQnNMUupVw7Ojqa2tnZ+ZlVGPU7KwCCmlCtVt8DwNW44GyKt5ICjWJHRkbOOI7zoRUE2+KtA4jb6nxQ667r3tre3lZ1wcplLQUI4gPBViFYAZBCvHUIxgGoHaBarc4DwM0IT9eklN2IOBHVAwghmu7rzgujACjtreu6GFMY1+v1+h2TvYAxABTxQYcXtztIKb8cHBxMmIJgBECC+Mj2Ni8I2gEkHGxiO7w8IGgF4ItvebChtLc+hIWoomkiHbQB0CG+ocJXGGM1GxC0ANAsPuBgBULbAAyJtwahLQCGxVuBkBmAJfHGIWQCYFm8UQipAeQk3hiEVADixAPAxuHh4Q0Lv7G07g5pAJwaHx9fiPp7q8Tv7+9P7u3tHes+rbUYLxaC53mTW1tb3ymxUAEo8W/V//mIQW2Lp6TDN8/zrlEgkAAwxl4DwKOIM/tnRJzinP+g0DbxDmNsMeq3upRyTgjxNGlOEoCxsbELXV1dqwDQ0zBgXisf1tSUDurMQE0DEgA1YwhCUcQ3psM7ALib9sBEBuBDuIyIs57nPaTkV5L9dD9njD0HgJdpUjIVAN0BF2G8EkARViHPGEoH5Em/CHOXDijCKuQZQ+mAPOkXYe6Od8Bf4tg4bhYue8oAAAAASUVORK5CYII=) no-repeat;
+			background-size:cover; 
+		}
+
+		.mdate-btn{
+			text-align: center;
+			margin-top: 1em;
+		}
+		.mdate-btn button{
+			outline: none;
+			border: none;
+			font-size: 1.4em;
+			padding: 0.5em 1.2em;
+			margin: 0 0.5em;
+			opacity: 0.8;
+			border-radius: 5px;
+		}
+		.mdate-btn button:active{
+			opacity: 1;
+		}
+		.mdate-btn button:last-child{
+			background-color: #2a57ae;
+			color: #fff;
+		}
+		.mdate-err{
+			font-size: 1.3em;
+			text-align: center;
+			letter-spacing: 1px;
+			color: red;
+		}
+
+	</style>
 </head>
 <body>
 	<header>
@@ -18,7 +112,12 @@
 	</header>
 	<section class="zbType">
 		<div class="zbType-item"><span id="zbType" data-code=""></span></div>
-		<div class="zbType-item"><span id="dayTime"></span></div>
+		<div class="zbType-item" data-mdate>
+			<div class="mdata-content">
+				<span id="mStart"></span><span class="fg">-</span>
+			</div>
+			<span id="mEnd"></span>
+		</div>
 	</section>
 	
 	<div class="clear"></div>
@@ -53,69 +152,91 @@
 		</label>
 	</footer>
 
+	<section class="mdate-choose">
+		<div class="mdate-close">
+			<button data-mclose class="close"></button>
+		</div>
+		<div class="mdate-input">
+			<input type="text" readonly="readonly" id="startTime"><span>至</span>
+			<input type="text" readonly="readonly" id="endTime">
+		</div>
+		<div class="mdate-err">
+			<span data-merr></span>
+		</div>
+		<div class="mdate-btn">
+			<button data-mclear >清空</button>
+			<button data-confirm >确定</button>
+		</div>
+	</section>
+
 	<script src="js/jquery.min.js"></script>
 	<script src='js/swiper-3.4.0.jquery.min.js'></script>
+	<script src="js/mobiscroll.min.js"></script>
 	<script>
 
 		var dataSet0 = [
 			['0000000000000','全司','-','100','130'],
-			['0000000000001','安徽分公司','10','20','30'],
-			['0000000000002','北京分公司','2','50','60'],
-			['0000000000003','常州分公司','1','30','-40'],
-			['0000000000004','大连分公司','3','20','30'],
-			['0000000000005','福建分公司','4','50','-60'],
-			['0000000000006','甘肃分公司','5','30','40'],
-			['0000000000007','广东分公司','6','20','30'],
-			['0000000000008','广西分公司','8','50','60'],
-			['0000000000009','贵州分公司','7','30','-40'],
-			['00000000000010','海南分公司','9','50','-60'],
-			['00000000000011','河北分公司','11','30','-40']
+			['0000000000001','安徽分公司','0','20','-30'],
+			['0000000000002','北京分公司','0','10','-60'],
+			['0000000000003','常州分公司','0','30','-40'],
+			['0000000000004','大连分公司','0','20','30'],
+			['0000000000005','福建分公司','0','50','-60'],
+			['0000000000006','甘肃分公司','0','-','40'],
+			['0000000000007','广东分公司','0','-','30'],
+			['0000000000008','广西分公司','0','50','60'],
+			['0000000000009','贵州分公司','0','30','-40'],
+			['00000000000010','海南分公司','0','50','-60'],
+			['00000000000011','河北分公司','0','30','-40']
 		];
 
 		//日、渠道为全司 的指标 
 		var dataSet1 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','当日越级件'],
-			['H005','当日投诉件'],
-			['H006','保单15日送达率'],
-			['H007','保全时效'],
-			['H008','理赔获赔率'],
-			['H009','投诉件办理及时率'],
-			['H0010','电话呼入人工接通率'],
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			// ['H003','犹豫期内电话回访成功率','负'],
+			['H003','犹豫期剩余3天内未完成回访的保单','正'],
+			['H003','回访不成功但仍在犹豫期内的保单','正'],
+			['H004','当日越级件','正'],
+			['H005','当日投诉件','正'],
+			['H006','保单15日送达率','负'],
+			['H007','保全时效','正'],
+			['H008','理赔获赔率','负'],
+			['H009','投诉件办理及时率','负'],
+			['H0010','电话呼入人工接通率','负'],
 		];
 
 		//月、年、渠道为全司的指标
 		var dataSet2 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','亿元保费投诉量'],
-			['H005','万张保单投诉量'],
-			['H006','保单15日送达率'],
-			['H007','保全时效'],
-			['H008','理赔获赔率'],
-			['H009','投诉件办理及时率'],
-			['H0010','电话呼入人工接通率'],
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			['H003','犹豫期内电话回访成功率','负'],
+			['H004','亿元保费投诉量','正'],
+			['H005','万张保单投诉量','正'],
+			['H006','保单15日送达率','负'],
+			['H007','保全时效','正'],
+			['H008','理赔获赔率','负'],
+			['H009','投诉件办理及时率','负'],
+			['H0010','电话呼入人工接通率','负'],
 		];
 
 		//日、渠道为 个险、渠道+健养、电网销 的指标 
 		var dataSet3 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','当日越级件'],
-			['H005','当日投诉件']
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			// ['H003','犹豫期内电话回访成功率','负'],
+			['H003','犹豫期剩余3天内未完成回访的保单','正'],
+			['H003','回访不成功但仍在犹豫期内的保单','正'],
+			['H004','当日越级件','正'],
+			['H005','当日投诉件','正']
 		];
 
 		//月、年、渠道为 个险、渠道+健养、电网销 的指标 
 		var dataSet4 = [
-			['H001','出险支付时效'],
-			['H002','申请支付时效'],
-			['H003','犹豫期内电话回访成功率'],
-			['H004','亿元保费投诉量'],
-			['H005','万张保单投诉量'],
+			['H001','出险支付时效','正'],
+			['H002','申请支付时效','正'],
+			['H003','犹豫期内电话回访成功率','负'],
+			['H004','亿元保费投诉量','正'],
+			['H005','万张保单投诉量','正'],
 		];
 
 
@@ -123,6 +244,7 @@
 			nyrType = sessionStorage.nyrType,//取pIndex.html缓存的 年/月/日类型
 			qdType1 = sessionStorage.qdType1,//取pIndex.html缓存的 渠道
 			zbCode1 = sessionStorage.zbCode1,//取pIndex.html缓存的 被选中的指标
+			branchNo1 = sessionStorage.branchNo1, 
 			zbList = JSON.parse( sessionStorage.zbList1 ),//取pIndex.html缓存的 指标数据
 			conHeight = 0;//用于页面布局
 
@@ -144,9 +266,17 @@
 
 				//初始化 滑块组件
 				swiperContent(pos,zbList.length,( nyrType == '2' ? true:false),nyrType);
-				$('#zbType').text( zbName( pos ).name ).attr('data-code',zbCode1);
-				$('#dayTime').text( chooseTime );
-				queryData(pos);//查询数据
+				var zb = zbName( pos );
+				$('#zbType').text( zb.name ).attr('data-code',zbCode1);
+				$('#mEnd').text( chooseTime );
+				if(pos == 0){
+					queryData(pos,zb.order);//查询数据
+				}
+				
+			}
+
+			if(branchNo1 == '0000000001'){
+				mdate(chooseTime,nyrType);
 			}
 			
 
@@ -162,6 +292,9 @@
 			$('.back').on('click',function(){
 				history.back(0);
 			});
+
+
+			
 			
 
 			//渠道选择 委托change事件
@@ -185,8 +318,9 @@
 
 					//初始化 滑块组件
 					swiperContent(0,zbList.length,( nyrType == '2' ? true:false),nyrType);
-					$('#zbType').text( zbName( 0 ).name ).attr('data-code',zbList[0][0]);
-					queryData(0);//查询数据
+					var zb = zbName( 0 );
+					$('#zbType').text( zb.name ).attr('data-code',zbList[0][0]);
+					queryData(0,zb.order);//查询数据
 				}
 			});
 
@@ -209,19 +343,20 @@
 			// 排序的点击事件
 			$('.content-box').delegate('[order-by]','click',function(){
 				var item = $(this).parents('[swiper-item]'),
+					zb = zbName( Number(item.attr('swiper-item')) ),
 					index = Number( $(this).attr('order-index')),
 					order = $(this).attr('order-by'),
-					ord = true,//asc--true,desc--false
+					flg = true,//asc--true,desc--false
 					el = $(this)[0];
 
 				//desc--降序 从大到小  asc--升序从小到大	
 				if (order == 'no' || order == 'desc') {
                     order = 'asc';
-                    ord = true;
+                    flg = true;
                     $(this)[0].className = 'desc2';
                 } else if (order == 'asc') {
                     order = 'desc';
-                    ord = false;
+                    flg = false;
                    $(this)[0].className = 'desc1';
                 }
 
@@ -231,24 +366,104 @@
                         $(this).attr('order-by','no');
                     }
                 });
+                if(zb.order=='负') flg = !flg;
 
                 $(this).attr('order-by', order);
 
-                item.find('ul').html( dataDeal( orderOrDesc(dataSet0, index, ord,1) ) );
+                item.find('ul').scrollTop(0).html( dataDeal( orderOrDesc(dataSet0, index, flg,1,zb.order,order) ) );
 
 			});
-
-			
-
 		});
+
+		function mdate(date,type){
+
+			//显示时间选择层
+			$('[data-mdate]').on('click',function(){
+				$('.mdate-choose').show();
+			});
+
+			//关闭时间选择层
+			$('[data-mclose]').on('click',function(){
+				$('[data-merr]').text('');
+				$('.mdate-choose').hide();
+			});
+
+			//清空时间
+			$('[data-mclear]').on('click',function(){
+				$('#startTime,#endTime').val('');
+			});
+
+			//最终确定
+			$('[data-confirm]').on('click',function(){
+				var start = $('#startTime').val();
+				var end = $('#endTime').val();
+
+				if(!start && !end ){
+					$('[data-merr]').text('请选择时间');
+					return false;
+				}else if(!end){
+					$('[data-merr]').text('请选择结束时间');
+					return false;
+				}else if(!start){
+					$('[data-merr]').text('请选择开始时间');
+					return false;
+				}
+
+				if(new Date(start) > new Date(end)){
+					$('[data-merr]').text('开始时间不能大于结束时间');
+					return false;
+				}
+
+				$('#mStart').text(start);
+				$('#mEnd').text(end);
+
+				$('.zbType').addClass('scal');
+				$('.mdata-content').css('display','inline-block');
+				$('[data-merr]').text('');
+				$('.mdate-choose').hide();
+			});
+
+			var dateOrder = 'yymmdd';
+			var dateFormat = 'yy/mm/dd';
+			var d = new Date();
+			d.setDate(d.getDate()-2);
+
+
+			if(type == '1'){
+				dateOrder = 'yymm';
+				dateFormat = 'yy/mm';
+			}
+
+			var def = {
+				'preset' : 'date',
+				'theme' : 'mobiscroll',
+				'display' : 'modal',
+				'lang' : 'zh',
+				'dateOrder' : dateOrder,
+				'dateFormat' : dateFormat,
+				'startYear' : d.getFullYear(),
+				'endYear' : d.getFullYear(),
+				'maxDate': d
+			};
+			
+			//绑定时间选择插件
+			$('#startTime,#endTime').mobiscroll(def);
+		}
+
+
+
+
+		var a = null;
 
 		/**
 		 * 查询数据
 		 * activeIndex 最新滑动窗口的下标
 		 */
-		function queryData(activeIndex){
+		function queryData(activeIndex,order){
 			//....ajax
-			$('.swiper-con').eq(activeIndex).html( dataDeal(dataSet0) );
+			a = [].concat(dataSet0);
+			var list = orderOrDesc(dataSet0, 3, (order == '正' ? true : false ),1,order,'asc');
+			$('.swiper-con').eq(activeIndex).html( dataDeal(list) );
 		}
 
 		/**
@@ -292,7 +507,7 @@
 							if(i!=0 || j != 2){
 								html+='<div class="content-item"><span>'+item[j]+'</span></div>';
 							}else{
-								html+='<div class="content-item"><span>'+(item[j].indexOf('-') < 0 ? '（'+item[j]+'）':item[j])+'</span></div>';
+								html+='<div class="content-item"><span>'+(item[j].indexOf('-') < 0 ?'（'+item[j]+'）':item[j])+'</span></div>';
 							}
 							
 						}else{
@@ -308,23 +523,13 @@
 			return html;
 		}
 
-        /**
-            获取超链接传递过来的值
-        */
-        // function getUrlPara(paraName) {
-        //     var sUrl = location.href;
-        //     var sReg = "(?:\\?|&){1}" + paraName + "=([^&]*)";
-        //     var re = new RegExp(sReg, "gi");
-        //     var a = re.exec(sUrl);
-        //     return a ? a[1] : null;
-
-        // }
-
+       
         /**
 		 * 初始化滑块 组件  填充内容
 		 * maxSWPNum 最大滑块数量
 		 * isyear是否为年
-		 * type 年/月/日类型 0-日 1-月 2-年 
+		 * type 年/月/日类型 0-日 1-月 2-年
+		 * position 指标对应的滑块 
 		 */
 		function swiperContent(position,maxSWPNum,isyear,type){
 			
@@ -335,8 +540,8 @@
 	   			html+='<div class="swiper-slide" swiper-item="'+i+'">'+
 		        	'<div class="content-title" >'+
 						'<div class="content-item"><span>机构</span></div>'+
-						'<div class="content-item"><span>排名</span></div>'+
-						'<div class="content-item"><span class="desc0" order-index="3" order-by="no">'+getNYR(type)+'</span></div>'+
+						'<div class="content-item"><span >排名</span></div>'+
+						'<div class="content-item"><span class="desc2" order-index="3" order-by="asc">'+getNYR(type)+'</span></div>'+
 						'<div class="content-item"><span class="desc0" order-index="4" order-by="no">'+(!isyear ? '环比':'同比')+'</span></div>'+
 					'</div>'+
 		        	'<ul class="swiper-con"><li><span>正在查询数据...</span></li></ul>'+
@@ -362,14 +567,14 @@
 		    	initialSlide:position,//设置初始值
 		        pagination: '.my-pagination',
 		        onSlidePrevStart:function(sw){
-		        	var obj = zbName(sw.activeIndex);
-		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
-		        	queryData(sw.activeIndex);
+		        	var zb = zbName(sw.activeIndex);
+		        	$('#zbType').text( zb.name ).attr('data-code',zb.code);
+		        	queryData(sw.activeIndex,zb.order);
 		       	},
 		       	onSlideNextStart:function(sw){
-		       		var obj = zbName(sw.activeIndex);
-		        	$('#zbType').text( obj.name ).attr('data-code',obj.code);
-		       		queryData(sw.activeIndex);
+		       		var zb = zbName(sw.activeIndex);
+		        	$('#zbType').text( zb.name ).attr('data-code',zb.code);
+		       		queryData(sw.activeIndex,zb.order);
 		       	}
 
 		    });
@@ -379,7 +584,8 @@
 		function zbName(index){
 			return {
 				'code': zbList[index][0],
-				'name': zbList[index][1]
+				'name': zbList[index][1],
+				'order':zbList[index][zbList[index].length-1]
 			}
 		}
 
@@ -408,46 +614,81 @@
 		}
 
 		//****************************** 排序实现 ********************************
-
+		
 		/**
 		 * 比较大小
 		 * a1,a2 要比较的两个值
-		 * orderOrDesc asc--true,desc--false 
+		 * flg flg ? b1 > b2 : b1 < b2;
 		 */
-		function bigOrSmall(a1,a2,orderOrDesc){
+		function bigOrSmall(a1,a2,flg){
 
             
             if (a1!=0 && ( !a1 || a1 == '-' || isNaN(a1) )) {
-                a1 = orderOrDesc ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
+                a1 = flg ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
             }
             if (a2!=0 && ( !a2 || a2 == '-' || isNaN(a2) )) {
-                a2 = orderOrDesc ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
+                a2 = flg ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
             }
             b1 = Number(a1);
             b2 = Number(a2);
 
-            return orderOrDesc ? b1 > b2 : b1 < b2;
+            return flg ? b1 > b2 : b1 < b2;
             
 		}
 
 		/**
          * arr 数据源
          * index 数组下标  使用数组中的这项来排序
-         * orderOrDesc asc--true,desc--false 
+         * flg flg ? b1 > b2 : b1 < b2;
          * noOrder 前几个不用排序  取下标
+         * order 正向指标 或 负向指标
+         * orderOrDesc 'asc'或 'desc' 
         */
-		function orderOrDesc(arr, index, orderOrDesc,noOrder) {
+		function orderOrDesc(arr, index, flg,noOrder,order,orderOrDesc) {
 			       
             for (var unfix = arr.length - 1; unfix > noOrder; unfix--) {
 
                 for (var i = noOrder; i < unfix; i++) {
-                    if (this.bigOrSmall(arr[i][index], arr[i + 1][index],orderOrDesc)) {
+                    if (this.bigOrSmall(arr[i][index], arr[i + 1][index],flg)) {
                         var temp = arr[i];
                         arr.splice(i, 1, arr[i + 1]);
                         arr.splice(i + 1, 1, temp);
                     }
                 }
             }
+
+            if(orderOrDesc == 'asc'){
+            	var b = 1;
+            	for(var i=noOrder;i<arr.length;i++){
+            		
+            		if(arr[i-1] && arr[i][index]!=arr[i-1][index]){
+            			b = i;
+            		}
+            		if(arr[i][index]!='-'){
+            			arr[i][2] = b+'';
+            		}else{
+            			arr[i][2] = '-';
+            		}
+            		
+            	}
+            }else{
+            	var b = 1;
+            	var len = arr.length;
+            	var num = 0;//值为'-'的总数
+            	for(var i=1;i<=len-noOrder;i++){
+            		if(arr[len+1-i] && arr[len+1-i][index]!=arr[len-i][index]){
+            			b = i-num;
+            		}
+            		if(arr[len-i][index]!='-'){
+            			arr[len-i][2] = b+'';
+            		}else{
+            			arr[len-i][2] = '-';
+            			num++;
+            		}
+            		
+            	}
+            }
+            
             return arr;
         }
 

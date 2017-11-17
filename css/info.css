@@ -5,14 +5,16 @@
 	width: 100%;
 	top: 4.5em;
 	height: 4em;
-	line-height: 4em;
-	padding: 0 1.5em;
+	/*line-height: 4em;*/
+	align-items: center;
+	justify-content: center;
+	padding: 0 1em;
 }
 .zbType .zbType-item{
-	
+	display: inline-block;
 }
 .zbType .zbType-item:first-child{
-	flex: 2;
+	flex: 1;
 	color: #007aff;
 	font-weight: bold;
 }
@@ -20,9 +22,10 @@
 	flex: 1;
 	color: #333;
 	text-align: right;
+	float: right;
 }
 .zbType .zbType-item span{
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 
@@ -50,14 +53,13 @@
 
 .content-title span{
 	display: inline-block;
-	height: 100%;
 	color: #fff;
 	font-size: 1.4em;
 	font-weight: bold;
+	height: 100%;
 }
 .content-box ul{
 	overflow-y:auto;
-	-webkit-overflow-scrolling:touch;
 	background-color: #fff; 
 }
 .content-box ul li {

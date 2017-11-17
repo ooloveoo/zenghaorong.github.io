@@ -93,13 +93,12 @@ nav label span.week{
 }
 .content-box ul{
 	overflow-y:auto;
-	-webkit-overflow-scrolling:touch;
 	background-color: #fff; 
 }
 .content-box ul li {
 	color: #333;
 	border-bottom: 1px solid #dfdfdf;
-	padding: 1em 5px;
+	padding: 0.8em 5px;
 }
 .content-box ul li a{
 	color:#007aff;
@@ -120,7 +119,7 @@ nav label span.week{
 	flex: 1;
 }
 .content-box ul li span{
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
 .content-box ul li:last-child{
 	border-bottom: none;
